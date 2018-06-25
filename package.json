@@ -1,0 +1,11 @@
+{
+  "name": "happyyoga.de",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Falk Hoppe <falkhoppe81@gmail.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "description": ""
+}

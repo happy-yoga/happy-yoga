@@ -5,14 +5,27 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "styles": "node-sass $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory --output $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
+    "styles:watch": "npm run styles -- --watch"
+  },
+  "config": {
+    "assets": {
+      "src_directory": "./assets",
+      "output_directory": "./dist",
+      "styles": {
+        "src_directory": "./styles",
+        "output_directory": "./styles"
+      }
+    }
   },
   "description": "",
   "dependencies": {
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "node-sass": "^4.9.0"
   },
   "devDependencies": {
     "eslint": "^5.0.1",

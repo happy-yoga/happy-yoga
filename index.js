@@ -7,7 +7,7 @@ const pug = require('pug')
 
 const app = express()
 
-app.use(morgan())
+app.use(morgan('common'))
 app.use(helmet())
 
 app.set('view engine', 'pug')

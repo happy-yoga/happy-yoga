@@ -5,7 +5,8 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "cypress:open": "cypress open",
     "styles": "node-sass $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory --output $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
     "styles:watch": "npm run styles -- --watch"
   },
@@ -29,6 +30,7 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
+    "cypress": "^3.0.1",
     "eslint": "^5.0.1",
     "standard": "^11.0.1"
   }

@@ -12,6 +12,9 @@ app.use(helmet())
 
 app.set('view engine', 'pug')
 
+app.use('/assets/styles', express.static('dist/styles'))
+app.use('/assets/images', express.static('dist/images'))
+
 app.get('/', (req, res) => {
   res.render('index')
 })

@@ -32,6 +32,21 @@ imagemin(['assets/images/*.{jpg,png}'], 'dist/images', {
 imagemin(['assets/images/*.svg'], 'dist/images', {
   plugins: [imageminSvgo()]
 })
+  .then(images => {
+    images.forEach(original => {
+      sharp(original.data)
+        .png()
+        .toFile(
+          original.path
+            .split(path.extname(original.path))
+            .concat('.png')
+            .join('')
+        )
+    })
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
 function createCroppings (image, metadata) {
   const original = sharp(image.data)

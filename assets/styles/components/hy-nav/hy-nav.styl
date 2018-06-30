@@ -1,0 +1,58 @@
+@import "../../globals/colors"
+
+hy-nav
+  // z-index 10
+  nav
+    position fixed
+    top 0
+    right 100%
+    bottom 0
+    z-index 999
+
+    display block
+    width 100%
+    height 100vh
+    background-color $bg-main-menu
+    background-color $bg-main-menu-opaque
+
+    // -webkit-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    // -moz-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    // -o-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    // -ms-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    // transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+
+    padding-top 10vh
+
+    &[aria-expanded="true"]
+      right 0
+
+  ul
+    padding-top 3rem
+    display flex
+    flex-wrap wrap
+
+  li
+    flex 1 0 40%
+    margin-left 5%
+    margin-right 5%
+
+    &.check-in
+      flex 1 0 100%
+      margin 0
+
+
+
+hy-nav-toggle
+  z-index 1000
+  position absolute
+  top 1rem
+  right .5rem
+
+  & > button
+    padding 0
+    border 0
+    background-color transparent
+    cursor pointer
+
+  & > button > span
+    display none

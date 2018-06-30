@@ -1,0 +1,4 @@
+mixin svg-picture(pathWithoutExtension, alt="", classes="")
+  picture(class=classes)
+    source(srcset=`${pathWithoutExtension}.svg` type="image/svg+xml")
+    img(src=`${pathWithoutExtension}.png`, alt=alt)

@@ -1,8 +1,93 @@
 extends layouts/landing-page
+include mixins/hamburger-button
+include mixins/svg-picture
 
 block content
   hy-hero
     hy-hero-logo
-      picture
-        source(srcset="/assets/images/happy-yoga-main.svg" type="image/svg+xml")
-        img(src="/assets/images/happy-yoga-main.png", alt="")
+      +svg-picture("/assets/images/happy-yoga-main")
+      
+    hy-nav
+      hy-nav-toggle
+        +hamburger-button("Main Menu")
+        
+      nav
+        ul
+          li
+            hy-nav-item
+              a(href="#menu1") 
+                +svg-picture("/assets/images/_ionicons_svg_md-filing")
+                | Kursplan
+          li
+            hy-nav-item
+              a(href="#menu2") 
+                +svg-picture("/assets/images/_ionicons_svg_md-card")
+                | Preise
+          li
+            hy-nav-item
+              a(href="#menu3") 
+                +svg-picture("/assets/images/_ionicons_svg_md-compass")
+                | Anfahrt
+          li
+            hy-nav-item
+              a(href="#menu4") 
+                +svg-picture("/assets/images/_ionicons_svg_md-chatbubbles")
+                | Kontakt
+          li.check-in
+            hy-nav-item
+              a(href="#menu5") 
+                +svg-picture("/assets/images/_ionicons_svg_md-log-in", "", "default")
+                +svg-picture("/assets/images/_ionicons_svg_md-log-in-alt", "", "alternative")
+                span Online Check-In
+        
+          
+  
+  content-area(id="menu1")
+    h1 Hello
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+  
+  
+  content-area(id="menu2")
+    h1 Hello
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+  
+  content-area(id="menu3")
+    h1 Hello
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+  
+  content-area(id="menu4")
+    h1 Hello
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+  
+  content-area(id="menu5")
+    h1 Hello
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+  
+    
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js")
+  script(src="https://cdn.jsdelivr.net/npm/document-register-element@1.10.0/build/document-register-element.js")
+  script(src="https://unpkg.com/sweet-scroll/sweet-scroll.min.js")
+  script(src="/assets/javascripts/components.js")
+  script.
+    document.addEventListener("touchstart", function(){}, true);
+    
+    $('a').on('touchstart', function(e){
+      $('a').removeClass('tapped');
+      $(this).addClass('tapped');
+    });
+     
+    $('a').on('touchend', function(e){
+        $(this).removeClass('tapped');
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const scroller = new SweetScroll({
+        trigger: 'a[href*="#"]'
+      });
+    }, false);

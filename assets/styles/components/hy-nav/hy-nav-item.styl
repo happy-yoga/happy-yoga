@@ -1,0 +1,72 @@
+@import "../../globals/colors"
+@import "../../helpers/positioning"
+$hy-hero-link-color = rgb(105, 177, 175)
+
+hy-nav-item
+  text-align center
+  // z-index 1001
+  transform-style preserve-3d
+
+  & a
+    vertical-centered()
+    font-size 1.2rem
+    font-weight 100
+    display block
+    width 100%
+    padding-top 1.5em
+    padding-bottom 1.5em
+
+    &.tapped
+      border 1px solid $hy-hero-link-color
+
+
+
+
+  & a:link, & a:visited, & a:hover, & a:active
+    color $hy-hero-link-color
+
+  & a:active
+    text-decoration underline wavy
+
+
+  a
+    text-decoration none
+    text-transform uppercase
+
+  .check-in & a
+    display block
+    background-color $hy-hero-link-color
+    color $bg-main-menu
+    padding .3em .5em
+    width 100%
+
+    & > .alternative
+      display none
+
+    & span, & img, & picture
+      display inline-block
+
+    & img
+      transform translateY(10%)
+      // vertical-centered()
+      width 1em
+      height 1em
+      margin-right .5rem
+
+    &.tapped
+      background-color transparent
+      color $hy-hero-link-color
+
+      & > .alternative
+        display inline-block
+      & > .default
+        display none
+
+
+
+  picture
+    display block
+    max-width 1.5rem
+    margin-left auto
+    margin-right auto
+    color $hy-hero-link-color

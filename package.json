@@ -19,8 +19,12 @@
     "images:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_images_output_directory",
     "images:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_images_output_directory",
     "images:watch": "chokidar 'assets/images/*' -c 'npm run images'",
+    "js": "npm run js:clean && npm run js:prepare && babel $npm_package_config_assets_src_directory/$npm_package_config_assets_js_src_directory/components --out-file $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory/components.js",
+    "js:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
+    "js:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
+    "js:watch": "chokidar 'assets/javascripts/**/*' -c 'npm run js'",
     "build": "npm run styles && npm run images",
-    "build:watch": "run-p start:watch styles:watch images:watch"
+    "build:watch": "run-p start:watch styles:watch images:watch js:watch"
   },
   "config": {
     "assets": {
@@ -33,6 +37,10 @@
       "images": {
         "src_directory": "./images",
         "output_directory": "./images"
+      },
+      "js": {
+        "src_directory": "./javascripts",
+        "output_directory": "./javascripts"
       }
     }
   },

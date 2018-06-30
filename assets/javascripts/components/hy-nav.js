@@ -30,6 +30,7 @@ class HyHeroNav extends HTMLElement {
     })
 
     $(window).scroll(this.handleToggleButtonColor.bind(this))
+    $(window).on('page:scrolled', this.handleToggleButtonColor.bind(this))
   }
 
   toggleNavigation () {
@@ -41,6 +42,7 @@ class HyHeroNav extends HTMLElement {
   }
 
   closeNavigation () {
+    this.buttonSvg.toggleClass('cross')
     this.nav.attr('aria-expanded', false)
   }
 

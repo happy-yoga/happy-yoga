@@ -1,0 +1,33 @@
+hy-nav
+  hy-nav-toggle
+    +hamburger-button("Main Menu")
+    
+  nav
+    ul
+      li
+        hy-nav-item
+          a(href="#menu1") 
+            +svg-picture("/assets/images/_ionicons_svg_md-filing")
+            | Kursplan
+      li
+        hy-nav-item
+          a(href="#menu2") 
+            +svg-picture("/assets/images/_ionicons_svg_md-card")
+            | Preise
+      li
+        hy-nav-item
+          a(href="#menu3") 
+            +svg-picture("/assets/images/_ionicons_svg_md-compass")
+            | Anfahrt
+      li
+        hy-nav-item
+          a(href="#menu4") 
+            +svg-picture("/assets/images/_ionicons_svg_md-chatbubbles")
+            | Kontakt
+      li.check-in
+        hy-nav-item
+          a(href="#menu5") 
+            +svg-picture("/assets/images/_ionicons_svg_md-log-in", "", "default")
+            +svg-picture("/assets/images/_ionicons_svg_md-log-in-alt", "", "alternative")
+            span Online Check-In
+    

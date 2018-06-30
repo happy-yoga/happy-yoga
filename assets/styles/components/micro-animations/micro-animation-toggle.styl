@@ -1,4 +1,6 @@
 micro-animation-toggle
+  color #fff
+
   svg {
     padding-left .8rem
     width: 2.5rem;
@@ -19,7 +21,7 @@ micro-animation-toggle
     transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
     stroke-width: 40px;
     stroke-linecap: round;
-    stroke: #fff;
+    stroke: currentColor;
     stroke-dashoffset: 0px;
   }
   path#top,
@@ -28,6 +30,9 @@ micro-animation-toggle
   }
   path#middle {
     stroke-dasharray: 240px 240px;
+  }
+  .cross path#top, .cross path#bottom, .cross path#middle {
+    stroke: #fff;
   }
   .cross path#top,
   .cross path#bottom {

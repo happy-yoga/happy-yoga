@@ -47,6 +47,7 @@
   },
   "description": "",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.12.1",

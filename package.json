@@ -25,7 +25,7 @@
     "js:watch": "chokidar 'assets/javascripts/**/*' -c 'npm run js'",
     "build": "npm run styles && npm run images && npm run js",
     "build:watch": "run-p start:watch styles:watch images:watch js:watch",
-    "postinstall": "npm run images"
+    "postinstall": "npm run build"
   },
   "config": {
     "assets": {

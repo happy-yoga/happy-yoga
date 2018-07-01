@@ -52,7 +52,7 @@
     "express": "^4.16.3",
     "helmet": "^3.12.1",
     "imagemin": "^5.3.1",
-    "imagemin-mozjpeg": "^7.0.0",
+    "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.1.0",
     "imagemin-svgo": "^6.0.0",
     "morgan": "^1.9.0",

@@ -1,7 +1,7 @@
 @import "../../globals/colors"
 
 hy-nav
-  // z-index 10
+  z-index 10
   nav
     position fixed
     top 0
@@ -14,17 +14,19 @@ hy-nav
     height 100vh
     // background-color $bg-main-menu
     background-color $bg-main-menu-opaque
+    opacity 0
 
-    // -webkit-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
-    // -moz-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
-    // -o-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
-    // -ms-transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
-    // transition: right 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    -webkit-transition: opacity 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    -moz-transition: opacity 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    -o-transition: opacity 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    -ms-transition: opacity 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
+    transition: opacity 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25)
 
     padding-top 10vh
 
     &[aria-expanded="true"]
       right 0
+      opacity 1
 
   ul
     padding-top 3rem

@@ -1,25 +1,29 @@
 @import '../../globals/breakpoints'
 hy-hero-breakpoints = hy-breakpoints
 
-breakpoint-path(path, breakpoint)
-  replace(" ", "", join("."+breakpoint, split(extname(path), path) extname(path)))
-
-media-query-string(breakpoint)
-
-
-responsive-bg-images(path)
-  background-image url(breakpoint-path(path, hy-hero-breakpoints[0]))
-
-  shift(hy-hero-breakpoints)
-  for breakpoint in hy-hero-breakpoints
-    @media (min-width: s("%spx", breakpoint))
-      background-image url(breakpoint-path(path, breakpoint))
+// breakpoint-path(path, breakpoint)
+//   replace(" ", "", join("."+breakpoint, split(extname(path), path) extname(path)))
+//
+// media-query-string(breakpoint)
+// 
+// responsive-bg-images(path, wideImagePath=null)
+//   background-image url(breakpoint-path(path, hy-hero-breakpoints[0]))
+//
+//   shift(hy-hero-breakpoints)
+//   for breakpoint in hy-hero-breakpoints
+//     @media (min-width: s("%spx", breakpoint))
+//       if wideImagePath
+//         background-image url(breakpoint-path(wideImagePath, breakpoint))
+//       else
+//         background-image url(breakpoint-path(path, breakpoint))
 
 $hy-hero-background-image
   background-color #3B2B2C // visible before image loads
-  responsive-bg-images('/assets/images/wesley-henshaw-498995-unsplash.jpg')
+  // responsive-bg-images('/assets/images/dominic-lowyears-122568-unsplash-cropped.jpg', '/assets/images/dominic-lowyears-122568-unsplash.jpg')
+  // responsive-bg-images('/assets/images/florencia-viadana-720019-unsplash-cropped.jpg', '/assets/images/florencia-viadana-720019-unsplash.jpg')
   background-position center center
   background-size cover
+  background-repeat no-repeat
 
 $hy-hero-background-image-overlay
   position relative
@@ -43,6 +47,16 @@ $hy-hero-full-screen
   height 100vh
 
 hy-hero
-  @extend $hy-hero-background-image
-  @extend $hy-hero-background-image-overlay
+  // @extend $hy-hero-background-image-overlay
   @extend $hy-hero-full-screen
+
+
+  hy-background
+    @extend $hy-hero-background-image
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index -1
+    transform translateZ(-1px) scale(2)

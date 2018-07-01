@@ -18,7 +18,7 @@ class HyHeroNav extends HTMLElement {
     this.microAnimToggle = $('micro-animation-toggle', this.toggleButton)
     this.scrolling = false
     this.toggledButtonColor = false
-    this.window = $(window)
+    this.window = $('main')
 
     this.toggleButton.on('click', () => {
       this.buttonSvg.toggleClass('cross')
@@ -29,8 +29,8 @@ class HyHeroNav extends HTMLElement {
       this.closeNavigation()
     })
 
-    $(window).scroll(this.handleToggleButtonColor.bind(this))
-    $(window).on('page:scrolled', this.handleToggleButtonColor.bind(this))
+    this.window.scroll(this.handleToggleButtonColor.bind(this))
+    this.window.on('page:scrolled', this.handleToggleButtonColor.bind(this))
   }
 
   toggleNavigation () {

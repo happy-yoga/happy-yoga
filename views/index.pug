@@ -2,41 +2,63 @@ extends layouts/landing-page
 include mixins/hamburger-button
 include mixins/svg-picture
 
+block head
+  script.
+    var cssTemplate = 'hy-hero hy-background { background-image: url("/assets/images/IMAGE_NAME-cropped.375.jpg");}@media (min-width: 768px) { hy-hero hy-background {   background-image: url("/assets/images/dominic-lowyears-122568-unsplash.768.jpg"); }}@media (min-width: 1366px) { hy-hero hy-background {   background-image: url("/assets/images/dominic-lowyears-122568-unsplash.1366.jpg"); }}@media (min-width: 1800px) { hy-hero hy-background {   background-image: url("/assets/images/dominic-lowyears-122568-unsplash.1800.jpg"); }}';
+    
+    var images = ['dominic-lowyears-122568-unsplash', 'florencia-viadana-720019-unsplash'];
+    
+    var imageName = images[Math.ceil(Math.random()*images.length)-1] || images[0];
+    var css = cssTemplate.replace('IMAGE_NAME', imageName)
+    head = document.head || document.getElementsByTagName('head')[0],
+    style = document.createElement('style');
+
+    style.type = 'text/css';
+    if (style.styleSheet){
+      // This is required for IE8 and below.
+      style.styleSheet.cssText = css;
+    } else {
+      style.appendChild(document.createTextNode(css));
+    }
+
+    head.appendChild(style);
+  
 block content
   include partials/main-nav
-  
-  hy-hero
-    hy-hero-logo
-      +svg-picture("/assets/images/happy-yoga-main")
-      
-          
-  
-  content-area(id="menu1")
-    h1 Hello
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-  
-  
-  content-area(id="menu2")
-    h1 Hello
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-  
-  content-area(id="menu3")
-    h1 Hello
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-  
-  content-area(id="menu4")
-    h1 Hello
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-  
-  content-area(id="menu5")
-    h1 Hello
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-    p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-  
+  main
+    hy-hero
+      hy-background
+      hy-hero-logo
+        +svg-picture("/assets/images/happy-yoga-main")
+        
+            
+    
+    content-area(id="menu1")
+      h1 Hello
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    
+    
+    content-area(id="menu2")
+      h1 Hello
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    
+    content-area(id="menu3")
+      h1 Hello
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    
+    content-area(id="menu4")
+      h1 Hello
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    
+    content-area(id="menu5")
+      h1 Hello
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+      p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
+    
   
   script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js")
     

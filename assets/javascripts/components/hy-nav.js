@@ -12,13 +12,13 @@ const requestAnimationFrame = (function () {
 class HyHeroNav extends HTMLElement {
   connectedCallback () {
     this.$ = $(this)
+    this.window = $(window)
     this.toggleButton = $('hy-nav-toggle', this.$)
     this.nav = $('nav', this.$)
     this.buttonSvg = $('svg', this.toggleButton)
     this.microAnimToggle = $('micro-animation-toggle', this.toggleButton)
     this.scrolling = false
     this.toggledButtonColor = false
-    this.window = $(window)
 
     this.toggleButton.on('click', () => {
       this.buttonSvg.toggleClass('cross')

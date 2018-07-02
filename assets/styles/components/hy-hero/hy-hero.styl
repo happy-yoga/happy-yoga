@@ -5,7 +5,7 @@ hy-hero-breakpoints = hy-breakpoints
 //   replace(" ", "", join("."+breakpoint, split(extname(path), path) extname(path)))
 //
 // media-query-string(breakpoint)
-// 
+//
 // responsive-bg-images(path, wideImagePath=null)
 //   background-image url(breakpoint-path(path, hy-hero-breakpoints[0]))
 //
@@ -47,7 +47,6 @@ $hy-hero-full-screen
   height 100vh
 
 hy-hero
-  // @extend $hy-hero-background-image-overlay
   @extend $hy-hero-full-screen
 
 
@@ -59,4 +58,4 @@ hy-hero
     bottom 0
     left 0
     z-index -1
-    transform translateZ(-1px) scale(2)
+    // transform translateZ(-1px) scale(2)

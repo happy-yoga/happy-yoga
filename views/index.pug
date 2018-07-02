@@ -69,27 +69,3 @@ block content
   script(src="https://unpkg.com/sweet-scroll/sweet-scroll.min.js")
   
   script(src="/assets/javascripts/components.js")
-    
-  script.
-    //- touch active state
-    document.addEventListener("touchstart", function(){}, true);
-    
-    $('a').on('touchstart', function(e){
-      $('a').removeClass('tapped');
-      $(this).addClass('tapped');
-    });
-     
-    $('a').on('touchend', function(e){
-        $(this).removeClass('tapped');
-    });
-    
-    //- parallax
-    var rellax = new Rellax('.rellax');
-
-    //- smooth anchor scrolling
-    document.addEventListener('DOMContentLoaded', () => {
-      const scroller = new SweetScroll({
-        trigger: 'a[href*="#"]',
-        updateURL: true
-      });
-    }, false);

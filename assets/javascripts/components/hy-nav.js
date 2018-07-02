@@ -31,6 +31,7 @@ class HyHeroNav extends HTMLElement {
 
     this.window.scroll(this.handleToggleButtonColor.bind(this))
     this.window.on('page:scrolled', this.handleToggleButtonColor.bind(this))
+    this.handleToggleButtonColor()
   }
 
   toggleNavigation () {

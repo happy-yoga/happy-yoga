@@ -8,7 +8,7 @@
     "start": "node index.js",
     "start:watch": "nodemon --exec 'npm start' --ignore cypress",
     "test": "cypress run",
-    "test:watch": "nodemon --exec 'npm run test -- --headed --no-exit'",
+    "test:watch": "chokidar 'cypress/integration/*' -c 'npm run test -- --no-exit --port 3333'",
     "cypress:open": "cypress open",
     "styles": "npm run styles:clean && npm run styles:prepare && stylus $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory -o $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
     "styles:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
@@ -63,10 +63,10 @@
     "stylus": "^0.54.5"
   },
   "devDependencies": {
-    "cypress": "^3.0.1",
+    "chokidar-cli": "^1.2.0",
+    "cypress": "^3.0.2",
     "eslint": "^5.0.1",
     "nodemon": "^1.17.5",
-    "standard": "^11.0.1",
-    "chokidar-cli": "^1.2.0"
+    "standard": "^11.0.1"
   }
 }

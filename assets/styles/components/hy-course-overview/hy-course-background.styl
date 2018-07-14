@@ -1,0 +1,71 @@
+hy-course-background
+  overflow hidden
+  display block
+  // background red
+  z-index -1
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+
+  background #F6F6F6
+
+
+$ball
+  font-size 1rem
+  width 3em
+  height 3em
+  border-radius 100%
+  background #26d1e0
+
+$line
+  width 1rem
+  height 10rem
+  border-radius 1rem
+  background #e02683
+
+hy-course-background-item
+  display block
+
+  &.ball
+    @extend $ball
+
+  &.line
+    @extend $line
+  //
+  // &.one
+  //   @extend $ball
+  //   margin-left 10vw
+  //   margin-top 10vh
+  //
+  // &.two
+  //   @extend $line
+  //   height 20rem
+  //   margin-left 24vw
+  //   margin-top 20vh
+  //
+  // &.three
+  //   @extend $ball
+  //   margin-left 38vw
+  //   margin-top 5vh
+  //
+  // &.four
+  //   @extend $line
+  //   height 30rem
+  //   margin-left 54vw
+  //   margin-top 30vh
+  //
+  // &.five
+  //   @extend $line
+  //   margin-left 74vw
+  //   height 40rem
+  //   // margin-top 10vh
+  //
+  // &.six
+  //   @extend $ball
+  //   width 5rem
+  //   height 5rem
+  //   margin-left 68vw
+  //   margin-top 5vh
+  //   background red

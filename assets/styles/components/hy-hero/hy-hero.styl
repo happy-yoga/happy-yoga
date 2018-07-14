@@ -25,22 +25,6 @@ $hy-hero-background-image
   background-size cover
   background-repeat no-repeat
 
-$hy-hero-background-image-overlay
-  position relative
-
-  &:after
-    content ''
-
-    position absolute
-    top 0
-    right 0
-    bottom 0
-    left 0
-
-    background-color #341C11
-    opacity .2
-    z-index 1
-
 $hy-hero-full-screen
   overflow hidden // prevents inner content from pushing the window down (e.g headlines)
   display block
@@ -48,7 +32,6 @@ $hy-hero-full-screen
 
 hy-hero
   @extend $hy-hero-full-screen
-
 
   hy-background
     @extend $hy-hero-background-image

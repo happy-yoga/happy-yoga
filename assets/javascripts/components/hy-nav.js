@@ -10,6 +10,11 @@ const requestAnimationFrame = (function () {
 })()
 
 class HyHeroNav extends HTMLElement {
+  constructor (self) {
+    self = super(self)
+    return self
+  }
+
   connectedCallback () {
     this.$ = $(this)
     this.window = $(window)

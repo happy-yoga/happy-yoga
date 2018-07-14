@@ -7,7 +7,7 @@ class HyCourseBackground extends HTMLElement {
   connectedCallback () {
     this.$ = $(this)
 
-    for (let i = 0; i < Math.random() * 20 + 20; i++) {
+    for (let i = 0; i < Math.random() * 20 + 10; i++) {
       this.createItem(i)
     }
   }

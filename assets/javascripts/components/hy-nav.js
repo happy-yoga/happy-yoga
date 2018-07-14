@@ -61,9 +61,11 @@ class HyHeroNav extends HTMLElement {
     requestAnimationFrame(() => {
       const domRect = this.buttonSvg[0].getBoundingClientRect()
       if (this.window.scrollTop() - domRect.y + 50 > this.window.height()) {
-        this.microAnimToggle.css('color', '#000')
+        this.toggleButton.addClass('over-content')
+        // this.microAnimToggle.css('color', '#000')
       } else {
-        this.microAnimToggle.css('color', '')
+        this.toggleButton.removeClass('over-content')
+        // this.microAnimToggle.css('color', '')
       }
       this.scrolling = false
     })

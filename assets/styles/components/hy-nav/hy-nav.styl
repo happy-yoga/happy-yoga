@@ -46,33 +46,40 @@ hy-nav
       margin 0
 
 
-hy-nav-toggle, hy-logo-reflection
+hy-nav-toggle //, hy-logo-reflection
   z-index 1000
   position fixed
-  top 1rem
-hy-nav-toggle
-  right .5rem
+  top 0
+  right 0
+  background-color $bright-pink
+  // padding .5rem .5rem
+
+  &.over-content
+    background-color #fff
+    micro-animation-toggle
+      color #000
 
   & > button
     padding 0
     border 0
     background-color transparent
     cursor pointer
+    padding .5rem .5rem
 
   & > button > span
     display none
 
-hy-logo-reflection
-  opacity 0
-  max-width 2rem
-  right 3rem
-  transform translateY(-10%)
-  -webkit-transition: opacity 0.3s
-  -moz-transition: opacity 0.3s
-  -o-transition: opacity 0.3s
-  -ms-transition: opacity 0.3s
-  transition: opacity 0.3s
-
-
-  img
-    max-width 100%
+// hy-logo-reflection
+//   opacity 0
+//   max-width 2rem
+//   right 3rem
+//   transform translateY(-10%)
+//   -webkit-transition: opacity 0.3s
+//   -moz-transition: opacity 0.3s
+//   -o-transition: opacity 0.3s
+//   -ms-transition: opacity 0.3s
+//   transition: opacity 0.3s
+//
+//
+//   img
+//     max-width 100%

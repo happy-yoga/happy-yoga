@@ -17,6 +17,7 @@ html(lang="en")
     include ../partials/main-nav
     block content
       
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js")
     script.
       //- touch active state
       document.addEventListener("touchstart", function(){}, true);
@@ -30,6 +31,8 @@ html(lang="en")
           $(this).removeClass('tapped');
       });
       
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.js")
+    script.
       //- parallax
       var rellax = new Rellax('.rellax');
 
@@ -40,11 +43,6 @@ html(lang="en")
           updateURL: true
         });
       }, false);
-      
-      
-    
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js" defer)
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.6.2/rellax.js" defer)
       
     //- TODO: load polyfills only if needed
     script(src="https://cdn.jsdelivr.net/npm/document-register-element@1.10.0/build/document-register-element.js" defer)

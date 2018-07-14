@@ -7,14 +7,15 @@ class HyCourseBackground extends HTMLElement {
   connectedCallback () {
     this.$ = $(this)
 
-    for (let i = 0; i < Math.random() * 20 + 10; i++) {
+    for (let i = 0; i < Math.random() * 15 + 15; i++) {
       this.createItem(i)
     }
   }
 
   createItem (count) {
     const item = $('<hy-course-background-item class="rellax" />')
-    const type = ['ball', 'line'][count % 2] // equal number of balls and lines
+    const itemDistribution = ['ball', 'ball', 'line', 'line', 'line']
+    const type = itemDistribution[count % itemDistribution.length] // equal number of balls and lines
 
     item.addClass(type)
     item.attr('data-rellax-speed', -1 * Math.ceil(Math.random() * 5))
@@ -22,8 +23,9 @@ class HyCourseBackground extends HTMLElement {
     item.css('margin-top', `${Math.ceil(Math.random() * 10)}vh`)
 
     if (type === 'ball') {
-      item.css('font-size', `${Math.floor(Math.random() * 2) + 1}rem`)
+      item.css('font-size', `${Math.floor(Math.random() * 2) + 0.5}rem`)
     } else {
+      item.css('width', `${Math.ceil(Math.random() * 3) * 0.3}rem`)
       item.css('height', `${Math.ceil(Math.random() * 20) + 20}rem`)
     }
 

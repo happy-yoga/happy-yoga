@@ -1,5 +1,11 @@
 include ./course-preview
 
-mixin hy-course-overview(courses)
-  each courseList, day in courses
-    h3= i18n.t(`weekdays.${day}`)
+mixin course-overview(courses)
+  hy-course-overview
+    each coursesForDay, day in courses
+      if coursesForDay.length > 0
+        h3= t(`weekdays.${day}`)
+        
+        each course in coursesForDay
+          +course-preview(course)
+      

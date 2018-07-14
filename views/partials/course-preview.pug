@@ -1,4 +1,7 @@
-mixin course-preview(title, teacher, note=null)
+mixin course-preview(course)
   hy-course-preview
-    h4= title
-    p= `mit ${teacher}`
+    h4
+      = course.title
+      if course.hint
+        = ` (${course.hint})`
+    p= t('course-preview.with', {teacher: course.teacher})

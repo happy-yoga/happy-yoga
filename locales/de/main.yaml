@@ -1,11 +1,11 @@
-{
-  "weekdays": {
-    "monday": "Montag",
-    "tuesday": "Dienstag",
-    "wednesday": "Mittwoch",
-    "thursday": "Donnerstag",
-    "friday": "Freitag",
-    "saturday": "Samstag",
-    "sunday": "Sonntag"
-  }
-}
+weekdays:
+  monday: Montag
+  tuesday: Dienstag
+  wednesday: Mittwoch
+  thursday: Donnerstag
+  friday: Freitag
+  saturday: Samstag
+  sunday: Sonntag
+
+course-preview:
+  with: mit {{teacher}}

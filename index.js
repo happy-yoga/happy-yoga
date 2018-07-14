@@ -53,7 +53,7 @@ app.get('/:lang', (req, res) => {
 app.get('/:lang/', (req, res) => {
   console.log('LANGUAGE', req.params.lang)
   req.i18n.changeLanguage(req.params.lang)
-  res.render('index', { i18n: req.i18n, courses })
+  res.render('index', { t: req.i18n.t.bind(req.i18n), courses })
 })
 
 app.listen(process.env.PORT, () => {

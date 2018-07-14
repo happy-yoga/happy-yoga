@@ -5,3 +5,4 @@ mixin course-preview(course)
       if course.hint
         = ` (${course.hint})`
     p= t('course-preview.with', {teacher: course.teacher})
+    p.time= `${course.begin} - ${course.end}`

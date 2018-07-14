@@ -32,19 +32,3 @@ class HyCourseBackground extends HTMLElement {
 }
 
 customElements.define('hy-course-background', HyCourseBackground)
-
-// mixin bg-item()
-//   - const type = ['ball', 'line'][Math.floor(Math.random() * 2)]
-//   - const speed = -1 * Math.ceil(Math.random()*5)
-//   - const styles = [ `margin-left: ${Math.ceil(Math.random() * 99)}vw`, `margin-top: ${Math.ceil(Math.random() * 20)}vh` ]
-//   hy-course-background-item(class=`${type} rellax` data-rellax-speed=speed style=styles.join(';'))
-//
-//
-// mixin course-overview(courses)
-//   hy-course-overview
-//     hy-course-background
-//       - let n = 0;
-//       while n < Math.ceil(Math.random() * 20)
-//         - n += 1
-//         - console.log(n)
-//         +bg-item()

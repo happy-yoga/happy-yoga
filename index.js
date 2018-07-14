@@ -51,8 +51,11 @@ app.get('/:lang', (req, res) => {
 })
 
 app.get('/:lang/', (req, res) => {
-  req.i18n.changeLanguage(req.params.lang)
-  res.render('index', { t: req.i18n.t.bind(req.i18n), courses })
+  res.render('index', { t: t(req), lang: req.params.lang, courses: courses.schedule })
+})
+
+app.get('/:lang/courses/:slug', (req, res) => {
+  res.render('course', { t: t(req), course: courses.findBySlug(req.params.slug) })
 })
 
 app.listen(process.env.PORT, () => {
@@ -64,4 +67,9 @@ function preferredLanguage (req) {
   const preferred = req.languages.reduce((curr, next) => (supportedLanguages.indexOf(curr) >= 0 ? curr : next))
 
   return supportedLanguages.indexOf(preferred) >= 0 ? preferred : fallback
+}
+
+function t (req) {
+  req.i18n.changeLanguage(req.params.lang)
+  return req.i18n.t.bind(req.i18n)
 }

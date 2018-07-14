@@ -1,8 +1,11 @@
 mixin course-preview(course)
-  hy-course-preview
-    h4
-      = course.title
-      if course.hint
-        = ` (${course.hint})`
-    p= t('course-preview.with', {teacher: course.teacher})
-    p.time= `${course.begin} - ${course.end}`
+  hy-course-preview(close-text=t('close'))
+    a(href=`/${lang}/courses/${course.slug}`)
+      h4
+        = course.title
+        if course.hint
+          = ` (${course.hint})`
+      p= t('course-preview.with', {teacher: course.teacher})
+      p.time= `${course.begin} - ${course.end}`
+
+      p.description Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla sit maiores doloribus assumenda obcaecati necessitatibus in nisi animi doloremque asperiores quis quibusdam reprehenderit nostrum, libero, aut commodi veniam. Consectetur, sequi.

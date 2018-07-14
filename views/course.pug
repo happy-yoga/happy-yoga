@@ -1,0 +1,16 @@
+extends layouts/sub-page 
+//- burger has to be black for complete page, when no hero
+include mixins/hamburger-button
+include mixins/svg-picture
+  
+block content
+  main  
+    content-area(id="menu3")  
+      h4
+        = course.title
+        if course.hint
+          = ` (${course.hint})`
+      p= t('course-preview.with', {teacher: course.teacher})
+      p.time= `${course.begin} - ${course.end}`
+      
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, nesciunt, consequuntur et delectus quam officia nisi, minima aliquam ut, quae magnam fugiat enim suscipit? Aspernatur voluptate atque expedita quaerat doloremque.

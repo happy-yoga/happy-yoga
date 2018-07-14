@@ -1,4 +1,6 @@
-module.exports = {
+const slug = require('../lib/slug.js')
+
+const courses = {
   monday: [
     { title: 'Gentle Yoga', teacher: 'Claudia', hint: 'sanft', begin: '10:00', end: '11:30' },
     { title: 'Yoga Flow', teacher: 'Julia', hint: 'Level II', begin: '18:15', end: '19:30' },
@@ -27,3 +29,32 @@ module.exports = {
   saturday: [],
   sunday: [{ title: 'Yoga Flow', teacher: 'Kirsten', hint: 'Level I-II', begin: '18:00', end: '19:30' }]
 }
+
+class CoursePlan {
+  constructor (plan) {
+    this.schedule = plan
+
+    let idSequence = 0
+
+    Object.keys(this.schedule).forEach(day => {
+      this.schedule[day].forEach(course => {
+        course['id'] = idSequence
+        course['slug'] = slug(`${course.title} ${course.hint || ''}`)
+        idSequence += 1
+      })
+    })
+  }
+
+  get courses () {
+    return Object.keys(this.schedule).reduce((acc, curr) => acc.concat(this.schedule[curr]), [])
+  }
+
+  findBySlug (slug) {
+    return this.courses.find(c => c.slug === slug)
+  }
+  findAllBySlug (slug) {
+    return this.courses.filter(c => c.slug === slug)
+  }
+}
+
+module.exports = new CoursePlan(courses)

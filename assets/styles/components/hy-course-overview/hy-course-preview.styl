@@ -5,6 +5,10 @@ hy-course-preview
   margin-bottom 1rem
   position relative
 
+  a:link, a:visited, a:hover, a:active
+    color $ft-color
+    text-decoration none
+
   h4
     margin-top 0
     margin-bottom .5rem
@@ -16,3 +20,38 @@ hy-course-preview
     position absolute
     bottom .5rem
     right 1rem
+
+  .description
+    display none
+
+  .course-preview-clone
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 100%
+    transition left .3s cubic-bezier(1.000, -0.530, 0.405, 1.425)
+    padding 3rem
+
+    display block
+    background-color #fff
+    z-index 500
+
+    .description
+      display block
+
+    &.visible
+      left 0
+
+    & .time
+      position static
+
+    & button
+      margin-top 3rem
+      background-color $bright-pink
+      border 0
+      color #fff
+      font-family 'Oswald', 'Helvetica Neue', Helvetica, Arial, sans-serif
+      text-transform uppercase
+      width 100%
+      padding .3rem 1rem

@@ -1,4 +1,10 @@
+$content-area-vertical-spacing = 5rem
+$content-area-horizontal-spacing = 5rem
+
 content-area
   display block
-  padding 10rem 5rem
+  padding $content-area-vertical-spacing $content-area-horizontal-spacing
   background-color #fff
+
+  &.full
+    padding 0

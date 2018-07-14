@@ -1,6 +1,7 @@
 extends layouts/landing-page
 include mixins/hamburger-button
 include mixins/svg-picture
+include partials/course-overview
 
 block head
   script.
@@ -39,10 +40,8 @@ block content
         
             
     
-    content-area(id="menu1")
-      hy-course-overview
-        
-    
+    content-area(id="menu1" class="full")
+      +hy-course-overview(courses)
     
     content-area(id="menu2")
       h1 Hello

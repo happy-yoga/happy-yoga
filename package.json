@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "start:watch": "nodemon --exec 'npm start' --ignore cypress",
-    "test": "cypress run",
+    "test": "echo 'enable \"cypress run\" to enable tests",
     "test:watch": "chokidar 'cypress/integration/*' -c 'npm run test -- --no-exit --port 3333'",
     "cypress:open": "cypress open",
     "styles": "npm run styles:clean && npm run styles:prepare && stylus $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory -o $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",

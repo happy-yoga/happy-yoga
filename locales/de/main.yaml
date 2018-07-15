@@ -10,3 +10,11 @@ weekdays:
 
 course-preview:
   with: mit {{teacher}}
+
+landing-page:
+  intro:
+    headline: Mach dich glücklich
+    bullets:
+      1: Du sitzt viel und möchtest Dich in Deiner Freizeit gerne bewegen, flexibler und kräftiger werden?
+      2: Dein Job fordert Dich geistig, und es ist Dir ein Verlangen, nach Feierabend wieder "aus dem Kopf in den Körper" zu kommen und abzuschalten?
+      3: Du möchtest Dich spirituell weiterentwickeln, "irgendwie glücklicher" leben, belastbarer und gelassener durch den Alltag gehen?

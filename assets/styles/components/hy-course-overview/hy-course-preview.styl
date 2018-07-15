@@ -31,23 +31,33 @@ hy-course-preview
     bottom 0
     left 100%
     transition left .3s cubic-bezier(1.000, -0.530, 0.405, 1.425)
-    padding 3rem
-
+    overflow-y scroll
     display block
     background-color #fff
     z-index 500
 
+    .course-preview-clone-content
+      display block
+      padding 3rem
+      min-height: 101vh
+
     .description
       display block
+      margin-bottom 1rem
 
     &.visible
       left 0
 
-    & .time
+    .time
       position static
+      margin-top .5rem
+      display block
+      // text-align right
+      font-weight bold
+      margin-bottom 1rem
 
-    & button
-      margin-top 3rem
+    button
+      margin-top 2rem
       background-color $bright-pink
       border 0
       color #fff
@@ -55,3 +65,6 @@ hy-course-preview
       text-transform uppercase
       width 100%
       padding .3rem 1rem
+      margin-bottom 50vh
+
+    // h4

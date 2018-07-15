@@ -10,9 +10,10 @@
     "test": "echo 'enable \"cypress run\" to enable tests",
     "test:watch": "chokidar 'cypress/integration/*' -c 'npm run test -- --no-exit --port 3333'",
     "cypress:open": "cypress open",
-    "styles": "npm run styles:clean && npm run styles:prepare && stylus $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory -o $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
-    "styles:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
-    "styles:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
+    "styles": "npm run styles:clean && npm run styles:prepare && stylus $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory -o $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory",
+    "poststyles": "postcss $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory/*.css --use autoprefixer -d $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
+    "styles:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory",
+    "styles:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory",
     "styles:watch": "chokidar 'assets/styles/**/*' -c 'npm run styles'",
     "images": "npm run images:clean && npm run images:prepare && npm run images:build",
     "images:build": "node image-build.js",
@@ -31,6 +32,7 @@
     "assets": {
       "src_directory": "./assets",
       "output_directory": "./dist",
+      "tmp_directory": "./tmp",
       "styles": {
         "src_directory": "./styles",
         "output_directory": "./styles"
@@ -47,6 +49,7 @@
   },
   "description": "",
   "dependencies": {
+    "autoprefixer": "^8.6.5",
     "babel-cli": "^6.26.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
@@ -61,6 +64,7 @@
     "morgan": "^1.9.0",
     "node-sass": "^4.9.0",
     "npm-run-all": "^4.1.3",
+    "postcss-cli": "^5.0.1",
     "pug": "^2.0.3",
     "sharp": "^0.20.5",
     "slug": "^0.9.1",

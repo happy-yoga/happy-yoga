@@ -42,16 +42,16 @@
     }
 
     toggleNavigation () {
-      this.nav.attr('aria-expanded', !(this.nav.attr('aria-expanded') === 'true'))
+      this.$.attr('aria-expanded', !(this.$.attr('aria-expanded') === 'true'))
     }
 
     openNavigation () {
-      this.nav.attr('aria-expanded', true)
+      this.$.attr('aria-expanded', true)
     }
 
     closeNavigation () {
       this.buttonSvg.toggleClass('cross')
-      this.nav.attr('aria-expanded', false)
+      this.attr('aria-expanded', false)
     }
 
     handleToggleButtonColor () {

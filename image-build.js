@@ -9,7 +9,7 @@ const sharp = require('sharp')
 const breakpoints = [375, 768, 1366, 1800]
 
 imagemin(['assets/images/*.{jpg,png}'], 'dist/images', {
-  plugins: [imageminMozjpeg(), imageminPngquant({ quality: '65-80' })]
+  plugins: production() ? [imageminMozjpeg(), imageminPngquant({ quality: '65-80' })] : []
 })
   .then(images => {
     images.forEach(original => {
@@ -30,7 +30,7 @@ imagemin(['assets/images/*.{jpg,png}'], 'dist/images', {
   })
 
 imagemin(['assets/images/*.svg'], 'dist/images', {
-  plugins: [imageminSvgo()]
+  plugins: production() ? [imageminSvgo()] : []
 })
   .then(images => {
     images.forEach(original => {
@@ -73,4 +73,8 @@ function imageCroppingPath (originalImagePath, cropping) {
   const ext = path.extname(originalImagePath)
 
   return originalImagePath.split(ext).join(`.${cropping}${ext}`)
+}
+
+function production () {
+  return process.env.NODE_ENV === 'production'
 }

@@ -28,7 +28,7 @@
     "js:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
     "js:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
     "watch:js": "chokidar 'assets/javascripts/**/*' -c 'npm run build:js'",
-    "build": "run-p build:*",
+    "build": "run-s build:*",
     "compress:styles": "gzip $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory/*.css --output=$npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
     "compress:js": "gzip $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory/*.js --output=$npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
     "postbuild": "run-p compress:*",

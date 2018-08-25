@@ -1,3 +1,5 @@
+/* global $, HTMLElement, customElements */
+
 ;(() => {
   const requestAnimationFrame = (function () {
     return (

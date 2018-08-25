@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">= 10"
+  },
   "scripts": {
     "start": "node index.js",
     "watch:start": "nodemon --exec 'npm start' --ignore cypress",

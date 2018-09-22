@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e # -o errexit # exit on errors
+set -u # -p nounset # exit on unset vars
+
+# echo $npm_package_config_assets_output_directory
+
+readonly src_directory="$npm_package_config_assets_src_directory/$npm_package_config_assets_images_src_directory"
+readonly output_directory="$npm_package_config_assets_output_directory/$npm_package_config_assets_images_output_directory"
+
+function cleanup(){
+  echo "cleaning up $output_directory"
+  rm -rf $output_directory;
+}
+
+
+function prepare(){
+  echo "preparing $output_directory"
+  mkdir -p $output_directory;
+}
+
+function build(){
+  echo "optimizing images"
+  node "${BASH_SOURCE%/*}/../image-build.js"
+}
+
+cleanup
+prepare
+build

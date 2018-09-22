@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -e # -o errexit # exit on errors
+set -u # -p nounset # exit on unset vars
+
+# echo $npm_package_config_assets_output_directory
+
+readonly src_directory="$npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory"
+readonly tmp_directory="$npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory"
+readonly output_directory="$npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory"
+
+function cleanup(){
+  echo "cleaning up $output_directory"
+  rm -rf $output_directory;
+}
+
+
+function prepare(){
+  echo "preparing $output_directory"
+  mkdir -p $output_directory;
+}
+
+function build(){
+  echo "building styles"
+  npx stylus $src_directory -o $tmp_directory
+}
+
+function postbuild(){
+  echo "optimizing styles"
+  npx postcss $tmp_directory/*.css --use autoprefixer -d $output_directory
+
+  echo "compress styles"
+  npx gzip $output_directory/*.css --output=$output_directory
+}
+
+cleanup
+prepare
+build
+postbuild

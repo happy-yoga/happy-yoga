@@ -11,29 +11,13 @@
     "start": "node index.js",
     "watch:start": "nodemon --exec 'npm start' --ignore cypress",
     "test": "eslint .",
-    "cypress:open": "cypress open",
-    "prestyles": "npm run styles:clean && npm run styles:prepare",
-    "styles": "stylus $npm_package_config_assets_src_directory/$npm_package_config_assets_styles_src_directory -o $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory",
-    "build:styles": "npm run styles",
-    "poststyles": "postcss $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory/*.css --use autoprefixer -d $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory && echo 'postcss finished'",
-    "styles:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory",
-    "styles:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory $npm_package_config_assets_tmp_directory/$npm_package_config_assets_styles_output_directory",
+    "build:styles": "./scripts/build/styles",
     "watch:styles": "chokidar 'assets/styles/**/*' -c 'npm run styles'",
-    "preimages": "echo 'clean and prepare images' && npm run images:clean && npm run images:prepare",
-    "images": "echo 'start image optimization' && node image-build.js",
-    "build:images": "npm run images",
-    "images:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_images_output_directory",
-    "images:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_images_output_directory",
-    "watch:watch": "chokidar 'assets/images/*' -c 'npm run build:images'",
-    "prejs": "npm run js:clean",
-    "build:js": "npm run js:prepare && babel $npm_package_config_assets_src_directory/$npm_package_config_assets_js_src_directory/components --out-file $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory/components.js",
-    "js:clean": "rm -rf $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
-    "js:prepare": "mkdir -p $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
+    "build:images": "./scripts/build/images",
+    "watch:images": "chokidar 'assets/images/*' -c 'npm run build:images'",
+    "build:js": "./scripts/build/javascripts",
     "watch:js": "chokidar 'assets/javascripts/**/*' -c 'npm run build:js'",
     "build": "npm run build:styles && npm run build:js && npm run build:images",
-    "compress:styles": "gzip $npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory/*.css --output=$npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory",
-    "compress:js": "gzip $npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory/*.js --output=$npm_package_config_assets_output_directory/$npm_package_config_assets_js_output_directory",
-    "postbuild": "run-p compress:*",
     "prewatch": "npm run build",
     "watch": "run-p watch:*"
   },
@@ -43,16 +27,16 @@
       "output_directory": "./dist",
       "tmp_directory": "./tmp",
       "styles": {
-        "src_directory": "./styles",
-        "output_directory": "./styles"
+        "src_directory": "styles",
+        "output_directory": "styles"
       },
       "images": {
-        "src_directory": "./images",
-        "output_directory": "./images"
+        "src_directory": "images",
+        "output_directory": "images"
       },
       "js": {
-        "src_directory": "./javascripts",
-        "output_directory": "./javascripts"
+        "src_directory": "javascripts",
+        "output_directory": "javascripts"
       }
     }
   },

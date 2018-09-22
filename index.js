@@ -9,6 +9,8 @@ const i18n = require('i18next')
 const i18nMiddleware = require('i18next-express-middleware')
 const i18nBackend = require('i18next-node-fs-backend')
 
+const cache = require('./lib/cache.js')
+
 const supportedLanguages = ['de', 'en']
 
 i18n
@@ -41,6 +43,7 @@ app.set('view engine', 'pug')
 app.use('/assets/styles', express.static('dist/styles'))
 app.use('/assets/images', express.static('dist/images'))
 app.use('/assets/javascripts', express.static('dist/javascripts'))
+app.use('/', express.static('favicon'))
 
 app.get('/', (req, res) => {
   res.redirect(`/${preferredLanguage(req)}/`)
@@ -50,7 +53,7 @@ app.get('/:lang', (req, res) => {
   res.redirect(`/${req.params.lang}/`)
 })
 
-app.get('/:lang/', (req, res) => {
+app.get('/:lang/', cache(84600), (req, res) => {
   res.render('index', { t: t(req), lang: req.params.lang, courses: courses.schedule })
 })
 

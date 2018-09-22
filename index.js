@@ -57,7 +57,7 @@ app.get('/:lang/', cache(84600), (req, res) => {
   res.render('index', { t: t(req), lang: req.params.lang, courses: courses.schedule })
 })
 
-app.get('/:lang/courses/:slug', (req, res) => {
+app.get('/:lang/courses/:slug', cache(84600), (req, res) => {
   res.render('course', { t: t(req), course: courses.findBySlug(req.params.slug) })
 })
 

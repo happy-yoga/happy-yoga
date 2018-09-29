@@ -5,10 +5,22 @@ content-area
   display block
   padding $content-area-vertical-spacing $content-area-horizontal-spacing
   background-color #fff
-
+  position relative
+  top 0
+  left 0
+  
   &.transparent
     background none
     background transparent
 
   &.full
     padding 0
+
+  h2
+    position absolute
+    top 0
+    right 0
+    margin 0
+    background-color #fff
+    padding .3rem 30vw .3rem 1rem
+    border-bottom 2px solid $bright-pink

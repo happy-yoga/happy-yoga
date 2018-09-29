@@ -2,6 +2,7 @@ extends layouts/landing-page
 include mixins/hamburger-button
 include mixins/svg-picture
 include partials/course-overview
+include partials/price-categories
 
 block head
   script.
@@ -38,7 +39,7 @@ block content
       hy-hero-logo(class="rellax" data-rellax-speed="3")
         +svg-picture("/assets/images/happy-yoga-main")
       
-    content-area(id="menu3")
+    content-area(id="menu1")
       h1= t('landing-page.intro.headline')
       ul.text-list
         li= t('landing-page.intro.bullets.1')
@@ -47,17 +48,20 @@ block content
       
       | ...
               
-    content-area(id="menu1").full
-      +course-overview(courses)
-    
     content-area(id="menu2").full
-      price-categories
+      +course-overview(courses)
 
-    content-area(id="menu4")
-      h1 Hello
+
+    content-area(id="menu3")
+      h2 Hello
       p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
       p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!
-    
+      
+    content-area(id="menu4" class="price-categories-wrapper").full
+      h2 Preise
+      +price-categories(priceCategories)
+
+        
     content-area(id="menu5")
       h1 Hello
       p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!

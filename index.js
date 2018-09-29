@@ -25,6 +25,7 @@ i18n
   })
 
 const courses = require('./data/courses.js')
+const priceCategories = require('./data/price-categories.js')
 
 const app = express()
 app.enable('strict routing')
@@ -54,7 +55,7 @@ app.get('/:lang', (req, res) => {
 })
 
 app.get('/:lang/', cache(84600), (req, res) => {
-  res.render('index', { t: t(req), lang: req.params.lang, courses: courses.schedule })
+  res.render('index', { t: t(req), lang: req.params.lang, courses: courses.schedule, priceCategories })
 })
 
 app.get('/:lang/courses/:slug', cache(84600), (req, res) => {

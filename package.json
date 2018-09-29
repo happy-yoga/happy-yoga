@@ -12,7 +12,7 @@
     "watch:start": "nodemon --exec 'npm start' --ignore cypress",
     "test": "eslint .",
     "build:styles": "./scripts/build/styles",
-    "watch:styles": "chokidar 'assets/styles/**/*' -c 'npm run styles'",
+    "watch:styles": "chokidar 'assets/styles/**/*' -c 'npm run build:styles'",
     "build:images": "./scripts/build/images",
     "watch:images": "chokidar 'assets/images/*' -c 'npm run build:images'",
     "build:js": "./scripts/build/javascripts",
@@ -52,7 +52,8 @@
     "memory-cache": "^0.2.0",
     "morgan": "^1.9.0",
     "pug": "^2.0.3",
-    "slug": "^0.9.1"
+    "slug": "^0.9.1",
+    "swiper": "^4.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.3",

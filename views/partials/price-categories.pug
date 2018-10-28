@@ -18,7 +18,7 @@ mixin price-option(option, monthly)
       
     if option.priceVariants
       each variant, index in option.priceVariants
-        price-variant
+        price-variant(class=variant.note ? "has-note" : "")
           +price(variant.price, monthly, (index > 0), variant.note)
         
 mixin price-category(category)
@@ -32,12 +32,10 @@ mixin price-category(category)
       
 
 mixin price-categories(categories)
-  price-categories.swiper-container
-    ul.swiper-wrapper
+  price-categories
+    ul
       each category in categories
-        li.swiper-slide  
-          +price-category(category)  
-      
-          
-    .swiper-pagination
+        li  
+          +price-category(category)        
+    
           

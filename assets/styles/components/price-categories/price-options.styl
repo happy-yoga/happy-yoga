@@ -1,0 +1,80 @@
+price-option
+  display block
+  padding .5rem 0
+
+  h4, .price
+    font-family 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif
+    text-align center
+
+  h4
+    font-weight 500
+    font-size 1.5rem
+    margin-top .5rem
+    margin-bottom 1.3rem
+    position relative
+    top 0
+    left 0
+
+    &:after
+      display inline-block
+      content: ''
+      height 2px
+      width 40px
+      background-color #000
+      position absolute
+      bottom -.9rem
+      left 50%
+      transform translateX(-50%)
+
+
+
+  .price
+    p
+      display inline
+      font-size 3rem
+      font-weight 500
+      position relative
+      left 0
+      top 0
+
+      .currency
+        position absolute
+        top -.2em
+        left -.7em
+        font-size .7em
+
+      .variant-info
+        font-size 1rem
+        position absolute
+        bottom 1rem
+        right 100%
+        transform translate(-2rem, 40%)
+
+      .monthly
+        font-size 1rem
+        position absolute
+        bottom 1rem
+        left 100%
+        transform translate(1rem, 40%)
+        white-space: nowrap
+
+      .note
+        font-size 1rem
+        position absolute
+        bottom -1rem
+        left 0
+        white-space: nowrap
+        text-align right
+
+
+  &.highlight .price
+    p, .monthly, .currency
+      color #FF0066
+    .note, .variant-info
+      color #000
+
+price-variant
+  display block
+
+  &.has-note
+    margin-bottom 1rem

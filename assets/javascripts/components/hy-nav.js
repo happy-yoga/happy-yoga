@@ -53,7 +53,7 @@
 
     closeNavigation () {
       this.buttonSvg.toggleClass('cross')
-      this.attr('aria-expanded', false)
+      this.$.attr('aria-expanded', false)
     }
 
     handleToggleButtonColor () {

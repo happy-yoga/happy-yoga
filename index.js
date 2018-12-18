@@ -9,7 +9,7 @@ const i18n = require('i18next')
 const i18nMiddleware = require('i18next-express-middleware')
 const i18nBackend = require('i18next-node-fs-backend')
 
-const cache = require('./lib/cache.js')
+const cache = require('./lib/http-cache.js')
 const contentful = require('./lib/contentful-client.js')
 
 const supportedLanguages = ['de', 'en']
@@ -58,12 +58,9 @@ app.get('/:lang', (req, res) => {
 app.get('/:lang/', cache(1200), (req, res) => {
   contentful
     .page('landing-page')
-    .then(r => r.contentAreas)
-    .then(r => r[0])
-    .then(r => r.fields.content)
-    .then(r => console.log(r))
-    .then(_ => {
+    .then(page => {
       res.render('index', {
+        page,
         t: t(req),
         lang: req.params.lang,
         courses: courses.schedule,

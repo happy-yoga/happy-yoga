@@ -58,17 +58,19 @@ app.get('/:lang', (req, res) => {
 app.get('/:lang/', cache(1200), (req, res) => {
   contentful
     .page('landing-page')
-    .then(page => page.contentAreas)
-    .then(page => page[0])
-    .then(fields => fields.content)
+    .then(r => r.contentAreas)
+    .then(r => r[0])
+    .then(r => r.fields.content)
+    .then(r => console.log(r))
+    .then(_ => {
+      res.render('index', {
+        t: t(req),
+        lang: req.params.lang,
+        courses: courses.schedule,
+        priceCategories
+      })
+    })
     .catch(e => console.log(e.message))
-
-  res.render('index', {
-    t: t(req),
-    lang: req.params.lang,
-    courses: courses.schedule,
-    priceCategories
-  })
 })
 
 app.get('/:lang/courses/:slug', cache(84600), (req, res) => {

@@ -8,13 +8,10 @@ include ./course-preview
 //- 
 //- 
 mixin course-overview(courses)
-  hy-course-overview
-    h2 Kursprogramm
-    
-    hy-course-background
-    each coursesForDay, day in courses
-      if coursesForDay.length > 0
-        h3= t(`weekdays.${day}`)
-        
-        each course in coursesForDay
-          +course-preview(course)
+  hy-course-background
+  each coursesForDay, day in courses
+    if coursesForDay.length > 0
+      h3= t(`weekdays.${day}`)
+      
+      each course in coursesForDay
+        +course-preview(course)

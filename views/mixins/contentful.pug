@@ -2,3 +2,12 @@ mixin contentArea(area)
   content-area(id=(area.fields.showInMainNav ? area.sys.id : null))
     h1= area.fields.title
     != cr.richtext(area.fields.content)
+
+//- mixin contentType(elem)
+//-   contentArea.sys.contentType.sys.id
+
+mixin courseOverview(overview)
+  content-area(id="menu2").full
+    hy-course-overview
+      h2= overview.fields.title
+      +course-overview(courses)

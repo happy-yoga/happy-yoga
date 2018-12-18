@@ -40,14 +40,10 @@ block content
       hy-hero-logo(class="rellax" data-rellax-speed="3")
         +svg-picture("/assets/images/happy-yoga-main")
     
-    //- =JSON.stringify(page)
     each contentArea in page.contentAreas
-      +contentArea(contentArea)
-      
-    //- content-area(id="menu2").full
-    //-   +course-overview(courses)
-    //- 
-    //- 
+      if cr.contentTypeExistsIn(contentArea, 'contentArea', 'courseOverview') 
+        +#{cr.contentTypeId(contentArea)}(contentArea)
+    
     //- content-area(id="menu3")
     //-   h2 Hello
     //-   p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates officia quasi velit excepturi laborum perspiciatis obcaecati dolor, ab facere eius! Consectetur enim sequi ipsum inventore facilis, natus maxime alias vel!

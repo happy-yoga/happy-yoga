@@ -67,7 +67,10 @@ app.get('/:lang/', cache('10m'), (req, res) => {
         priceCategories
       })
     })
-    .catch(e => console.log(e.message))
+    .catch(e => {
+      console.log(e.message)
+      res.render('error')
+    })
 })
 
 app.get('/:lang/courses/:slug', cache('1d'), (req, res) => {

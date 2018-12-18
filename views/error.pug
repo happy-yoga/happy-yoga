@@ -1,0 +1,10 @@
+extends layouts/sub-page 
+//- burger has to be black for complete page, when no hero
+include mixins/hamburger-button
+include mixins/svg-picture
+  
+block content
+  main  
+    content-area  
+      h4= t('error.unknown.title')
+      p= t('error.unknown.message')

@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const path = require('path')
 const express = require('express')
 
@@ -30,6 +31,8 @@ const courses = require('./data/courses.js')
 const priceCategories = require('./data/price-categories.js')
 
 const app = express()
+
+console.log(app.production)
 app.enable('strict routing')
 
 app.use(

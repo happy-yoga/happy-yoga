@@ -8,6 +8,7 @@ const helmet = require('helmet')
 const i18n = require('i18next')
 const i18nMiddleware = require('i18next-express-middleware')
 const i18nBackend = require('i18next-node-fs-backend')
+const contentfulRenderer = require('./lib/contentful-renderer.js')
 
 const cache = require('./lib/http-cache.js')
 const contentful = require('./lib/contentful-client.js')
@@ -64,7 +65,8 @@ app.get('/:lang/', cache('10m'), (req, res) => {
         t: t(req),
         lang: req.params.lang,
         courses: courses.schedule,
-        priceCategories
+        priceCategories,
+        cr: contentfulRenderer
       })
     })
     .catch(e => {

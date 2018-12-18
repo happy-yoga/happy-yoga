@@ -1,0 +1,4 @@
+mixin contentArea(area)
+  content-area(id=(area.fields.showInMainNav ? area.sys.id : null))
+    h1= area.fields.title
+    != cr.richtext(area.fields.content)

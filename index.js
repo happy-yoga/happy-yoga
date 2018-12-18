@@ -10,6 +10,7 @@ const i18nMiddleware = require('i18next-express-middleware')
 const i18nBackend = require('i18next-node-fs-backend')
 
 const cache = require('./lib/cache.js')
+const contentful = require('./lib/contentful-client.js')
 
 const supportedLanguages = ['de', 'en']
 
@@ -54,12 +55,27 @@ app.get('/:lang', (req, res) => {
   res.redirect(`/${req.params.lang}/`)
 })
 
-app.get('/:lang/', cache(84600), (req, res) => {
-  res.render('index', { t: t(req), lang: req.params.lang, courses: courses.schedule, priceCategories })
+app.get('/:lang/', cache(1200), (req, res) => {
+  contentful
+    .page('landing-page')
+    .then(page => page.contentAreas)
+    .then(page => page[0])
+    .then(fields => fields.content)
+    .catch(e => console.log(e.message))
+
+  res.render('index', {
+    t: t(req),
+    lang: req.params.lang,
+    courses: courses.schedule,
+    priceCategories
+  })
 })
 
 app.get('/:lang/courses/:slug', cache(84600), (req, res) => {
-  res.render('course', { t: t(req), course: courses.findBySlug(req.params.slug) })
+  res.render('course', {
+    t: t(req),
+    course: courses.findBySlug(req.params.slug)
+  })
 })
 
 app.listen(process.env.PORT, () => {
@@ -68,7 +84,9 @@ app.listen(process.env.PORT, () => {
 
 function preferredLanguage (req) {
   const fallback = 'de'
-  const preferred = req.languages.reduce((curr, next) => (supportedLanguages.indexOf(curr) >= 0 ? curr : next))
+  const preferred = req.languages.reduce((curr, next) =>
+    supportedLanguages.indexOf(curr) >= 0 ? curr : next
+  )
 
   return supportedLanguages.indexOf(preferred) >= 0 ? preferred : fallback
 }

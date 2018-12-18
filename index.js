@@ -55,7 +55,7 @@ app.get('/:lang', (req, res) => {
   res.redirect(`/${req.params.lang}/`)
 })
 
-app.get('/:lang/', cache(1200), (req, res) => {
+app.get('/:lang/', cache('10m'), (req, res) => {
   contentful
     .page('landing-page')
     .then(page => {
@@ -70,7 +70,7 @@ app.get('/:lang/', cache(1200), (req, res) => {
     .catch(e => console.log(e.message))
 })
 
-app.get('/:lang/courses/:slug', cache(84600), (req, res) => {
+app.get('/:lang/courses/:slug', cache('1d'), (req, res) => {
   res.render('course', {
     t: t(req),
     course: courses.findBySlug(req.params.slug)

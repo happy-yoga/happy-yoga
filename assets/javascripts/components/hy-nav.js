@@ -29,8 +29,6 @@
       this.toggledButtonColor = false
 
       this.toggleButton.on('click', () => {
-        this.toggleButton.toggleClass('cross')
-        this.buttonSvg.toggleClass('cross')
         this.toggleNavigation()
       })
 
@@ -44,6 +42,9 @@
     }
 
     toggleNavigation () {
+      console.log('toggle navigatio')
+      this.toggleButton.toggleClass('cross')
+      this.buttonSvg.toggleClass('cross')
       this.$.attr('aria-expanded', !(this.$.attr('aria-expanded') === 'true'))
     }
 
@@ -52,6 +53,8 @@
     }
 
     closeNavigation () {
+      console.log('close navigartio')
+      this.toggleButton.toggleClass('cross')
       this.buttonSvg.toggleClass('cross')
       this.$.attr('aria-expanded', false)
     }

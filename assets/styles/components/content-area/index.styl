@@ -1,14 +1,11 @@
-$content-area-vertical-spacing = 5rem
-$content-area-horizontal-spacing = 5rem
-
 content-area
   display block
-  padding $content-area-vertical-spacing $content-area-horizontal-spacing
+  padding 5rem 2rem
   background-color #fff
   position relative
   top 0
   left 0
-  
+
   &.transparent
     background none
     background transparent
@@ -24,3 +21,6 @@ content-area
     background-color #fff
     padding .3rem 30vw .3rem 1rem
     border-bottom 2px solid $bright-pink
+
+  @media screen and (min-width: 600px)
+    padding 5rem 5rem

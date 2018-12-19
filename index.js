@@ -32,7 +32,6 @@ const priceCategories = require('./data/price-categories.js')
 
 const app = express()
 
-console.log(app.production)
 app.enable('strict routing')
 
 app.use(

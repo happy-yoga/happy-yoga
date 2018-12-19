@@ -43,6 +43,7 @@
   "description": "",
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^12.1.2",
+    "@contentful/rich-text-types": "^12.1.2",
     "contentful": "^7.0.5",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",

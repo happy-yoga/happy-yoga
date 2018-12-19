@@ -13,7 +13,6 @@ function cleanup(){
   rm -rf $output_directory;
 }
 
-
 function prepare(){
   echo "preparing $output_directory"
   mkdir -p $output_directory;

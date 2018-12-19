@@ -10,12 +10,17 @@ readonly tmp_directory="$npm_package_config_assets_tmp_directory/$npm_package_co
 readonly output_directory="$npm_package_config_assets_output_directory/$npm_package_config_assets_styles_output_directory"
 
 function cleanup(){
+  echo "cleaning up $tmp_directory"
+  rm -rf $tmp_directory;
+
   echo "cleaning up $output_directory"
   rm -rf $output_directory;
 }
 
-
 function prepare(){
+  echo "preparing $tmp_directory"
+  mkdir -p $tmp_directory;
+
   echo "preparing $output_directory"
   mkdir -p $output_directory;
 }

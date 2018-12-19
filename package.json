@@ -8,6 +8,7 @@
     "node": ">= 10"
   },
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node index.js",
     "watch:start": "nodemon --exec 'npm start' --ignore cypress",
     "test": "eslint .",

@@ -25,11 +25,9 @@ class PriceCategories extends HTMLElement {
       this.priceCategories.removeClass(openClass)
 
       if (!isActive) {
+        priceCategory.addClass(openClass)
         window.requestAnimationFrame(() => {
-          priceCategory.addClass(openClass)
-          window.requestAnimationFrame(() => {
-            priceCategory.addClass(activeClass)
-          })
+          priceCategory.addClass(activeClass)
         })
       }
     })

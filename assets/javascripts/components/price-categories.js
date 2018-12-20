@@ -21,23 +21,17 @@ class PriceCategories extends HTMLElement {
       const priceCategory = $(e.currentTarget)
       const isActive = priceCategory.hasClass(activeClass)
 
-      window.requestAnimationFrame(() => {
-        this.priceCategories.removeClass(activeClass)
-        window.requestAnimationFrame(() => {
-          this.priceCategories.removeClass(openClass)
+      this.priceCategories.removeClass(activeClass)
+      this.priceCategories.removeClass(openClass)
 
+      if (!isActive) {
+        window.requestAnimationFrame(() => {
+          priceCategory.addClass(openClass)
           window.requestAnimationFrame(() => {
-            if (!isActive) {
-              window.requestAnimationFrame(() => {
-                priceCategory.addClass(openClass)
-                window.requestAnimationFrame(() => {
-                  priceCategory.addClass(activeClass)
-                })
-              })
-            }
+            priceCategory.addClass(activeClass)
           })
         })
-      })
+      }
     })
   }
 }

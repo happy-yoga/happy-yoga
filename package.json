@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "start": "node index.js",
-    "watch:start": "nodemon --exec 'npm start' --ignore cypress",
+    "watch:start": "nodemon --exec 'npm start' --ignore assets/ --ignore dist/",
     "test": "eslint .",
     "build:styles": "./scripts/build/styles",
     "watch:styles": "chokidar 'assets/styles/**/*' -c 'npm run build:styles'",

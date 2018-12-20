@@ -1,8 +1,15 @@
 $price-category-border-radius = 5px
 content-area.price-categories-wrapper
-  background-color #e8e6e6
-  padding 2rem
-  padding-top 4rem
+  // background-color #e8e6e6
+  // padding 2rem
+  padding-top 3rem
+
+  h2
+    top -1px
+    // z-index 1000
+    // margin-bottom 0
+    // background transparent
+    border-bottom none
 
 price-categories
   display block
@@ -11,100 +18,54 @@ price-categories
     margin 0
     padding 0
 
+
+colorList = #DA7EAA #8F50BB #16042E #DA7EAA #8F50BB #16042E
+
 price-category
-  display inline-block
-  margin-right .5rem
-  border-radius $price-category-border-radius
-  background-color #fff
-  margin-bottom 1rem
+  positioning-root()
+  display block
 
-  // @media screen and (max-width: 600px)
-  min-width 320px
-  width 100%
-
+  for bgCol, i in colorList
+    li:nth-child({i+1}) &
+      z-index 999 - i
 
   header
-    positioning-root()
-    padding-top 2rem
-    padding-bottom 2rem
-    background-color #ff4ca5
-    background: linear-gradient(to bottom, #FC3DC0 1%,#FF4CF0 100%)
-    color #fff
-    border-radius $price-category-border-radius $price-category-border-radius 0 0
-    overflow hidden
+    display block
+    border-radius 0 0 0 3rem
+    margin-top -3rem
 
-    &:before, &:after
-      content ''
-      display block
-      width 100%
-      position absolute
-      bottom -1.5rem
-      height 3rem
-      border-radius 100%
-      background-color #fff
+    padding 3rem 2rem 1rem 2rem
 
-    &:before
-      left -50%
-    &:after
-      right -50%
+    li:first-of-type &
+      margin-top 0
 
-    h3, p
-      text-align center
+    for bgCol, i in colorList
+      li:nth-child({i+1}) &
+        background-color bgCol
+        color #fff
 
     h3
-      font-size 2rem
-      font-weight 300
-      margin-top 0
-      margin-bottom 0
-
+      position relative
+      font-size 1.8rem
+      margin-bottom .3rem
     p
-      margin-top .3rem
-      // color $dark-slate
-
-  ul, li
-    margin 0
-    padding 0
+      position relative
+      margin-top 0
 
   ul
-    positioning-root()
-    padding .5rem 0 1rem 0
+    // display none
+    background-color #fff
+    border-radius 0 0 0 3rem
+    display none
+    overflow hidden
 
-    &:before
-      content '♥︎'
-      // color #ff7ab8
-      // color #A730EF
-      color #fff
-      position absolute
-      top -1.2rem
-      left 50%
-      transform translateX(-50%)
+    li
+      transform translateY(-100px)
+      transition transform .5s
 
-  li
+  &.open ul
     display block
-    border-bottom 1px solid #d8d5da
-    // padding 1.5rem 5vw 1.5rem 5vw
 
-
-    @media screen and (min-width: 800px)
-      display inline !important
-
-
-
-//
-// price-categories li:nth-child(2)
-//   header
-//     background linear-gradient(to bottom, #ff4ca5 1%,#ff7ab8 100%)
-//   ul:before
-//     // color #ff7ab8
-//
-// price-categories li:nth-child(3)
-//   header
-//     background: linear-gradient(to bottom, #48A0F6 1%,#5AC8FF 100%)
-//   ul:before
-//     // color #5AC8FF
-//
-// price-categories li:nth-child(4)
-//   header
-//     background: linear-gradient(to bottom, #FC3DC0 1%,#FF4CF0 100%)
-//   ul:before
-//     // color #FF4CF0
+  &.active ul
+    li
+      transform translateY(0px)

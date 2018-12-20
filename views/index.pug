@@ -14,7 +14,6 @@ block head
       'florencia-viadana-720019-unsplash'
     ];
     var imageIndex = Math.ceil(Math.random()*images.length)-1
-    console.log(imageIndex)
     var imageName = images[imageIndex] || images[0];
     var css = cssTemplate.replace(/IMAGE_NAME/g, imageName)
     head = document.head || document.getElementsByTagName('head')[0],

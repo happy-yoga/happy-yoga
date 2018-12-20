@@ -28,14 +28,15 @@ mixin price-category(category)
       p= category.subTitle
     ul  
       each option in category.priceOptions
-        +price-option(option, option.monthly)
+        li
+          +price-option(option, option.monthly)
       
 
 mixin price-categories(categories)
   price-categories
     ul
       each category in categories
-        li  
+        li
           +price-category(category)        
     
           

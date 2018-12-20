@@ -10,15 +10,12 @@ block head
     var cssTemplate = 'hy-hero hy-background { background-image: url("/assets/images/IMAGE_NAME.768.jpg");}@media (min-width: 768px) { hy-hero hy-background {   background-image: url("/assets/images/IMAGE_NAME.768.jpg"); }}@media (min-width: 1366px) { hy-hero hy-background {   background-image: url("/assets/images/IMAGE_NAME.1366.jpg"); }}@media (min-width: 1800px) { hy-hero hy-background {   background-image: url("/assets/images/IMAGE_NAME.1800.jpg"); }}';
     
     var images = [
-      'dominic-lowyears-122568-unsplash', 
-      'artem-bali-413154-unsplash', 
-      'form-426157-unsplash', 
-      'jared-rice-539485-unsplash', 
       'jennifer-regnier-599117-unsplash', 
       'florencia-viadana-720019-unsplash'
     ];
-    
-    var imageName = images[Math.ceil(Math.random()*images.length)-1] || images[0];
+    var imageIndex = Math.ceil(Math.random()*images.length)-1
+    console.log(imageIndex)
+    var imageName = images[imageIndex] || images[0];
     var css = cssTemplate.replace(/IMAGE_NAME/g, imageName)
     head = document.head || document.getElementsByTagName('head')[0],
     style = document.createElement('style');

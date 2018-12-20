@@ -1,16 +1,50 @@
 contentful-embedded-asset
   display block
+  margin-bottom 1.5rem
 
-  img
-    border-radius .5rem
+  // img
+  //   border-radius .5rem
+
+  margin-left -2rem
+  margin-right -2rem
+
+  figure
+    display block
+    padding 0
+    margin 0
+
+  figcaption
+    font-style italic
+    font-weight 100
+    font-size .875em
+    text-align right
+    padding-left 1rem
+    padding-right 1rem
 
 contentful-document
   display block
 
   ul, ol
-    padding-bottom 1rem
-    
+    margin-bottom 1.5rem
+
+  ul li
+    positioning-root()
+    padding-left 1.5rem
+
+    &:before
+      content ''
+      display block
+      width 1em
+      height 1em
+      position absolute
+      top .25rem
+      left .1rem
+      background url(/assets/images/flower.svg) no-repeat top left
+      background-size cover
+
+
+
   li
-    padding-bottom .875rem
+    // padding-bottom .875rem
     &:last-of-type
       padding-bottom 0

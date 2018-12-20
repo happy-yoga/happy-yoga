@@ -1,101 +1,101 @@
-@import "../../globals/colors"
-
-hy-nav
-  position fixed
-  top 100%
-  // top 10vh
-  right 0
-  bottom 0
-  left 0
-  z-index 999
-
-  display block
-  width 100%
-  height 90vh
-
-  // background-color $bg-main-menu
-  background-color #fff
-  // border-top 1px solid
-  // border-color rgba(220, 220, 220, .5)
-  box-shadow  0 0 20px #dedede
-  border-radius 2rem 2rem 0 0
-
-  transition: top 0.3s
-
-  // padding-top 10vh
-
-  &[aria-expanded="true"]
-    top 10vh
-    nav hy-nav-toggle
-      display block
-    // opacity 1
-
-  nav
-    display block
-    width 100%
-    height 90vh
-
-    overflow-y scroll
-    // -webkit-overflow-scrolling: touch;
-
-
-
-  ul
-    padding-top 3rem
-
-  li
-    margin-left 5%
-    margin-right 5%
-
-    &.check-in
-      margin 0
-
-
-hy-nav-toggle //, hy-logo-reflection
-  z-index 1000
-  position fixed
-  top .5rem
-  right .5rem
-  background-color $bright-pink
-  // padding .5rem .5rem
-
-
-  &.cross
-    background-color transparent !important
-    display none
-
-
-  &.over-content
-    background-color #fff
-    micro-animation-toggle
-      color #000
-
-  & > button
-    padding 0
-    border 0
-    background-color transparent
-    cursor pointer
-    padding .6rem .4rem .4rem .4rem
-
-  & > button > span
-    display none
-
-  hy-nav nav &
-    position absolute
-    top 1rem
-    right .5rem
-
-// hy-logo-reflection
-//   opacity 0
-//   max-width 2rem
-//   right 3rem
-//   transform translateY(-10%)
-//   -webkit-transition: opacity 0.3s
-//   -moz-transition: opacity 0.3s
-//   -o-transition: opacity 0.3s
-//   -ms-transition: opacity 0.3s
-//   transition: opacity 0.3s
+// @import "../../globals/colors"
+//
+// hy-nav
+//   position fixed
+//   top 100%
+//   // top 10vh
+//   right 0
+//   bottom 0
+//   left 0
+//   z-index 999
+//
+//   display block
+//   width 100%
+//   height 90vh
+//
+//   // background-color $bg-main-menu
+//   background-color #fff
+//   // border-top 1px solid
+//   // border-color rgba(220, 220, 220, .5)
+//   box-shadow  0 0 20px #dedede
+//   border-radius 2rem 2rem 0 0
+//
+//   transition: top 0.3s
+//
+//   // padding-top 10vh
+//
+//   &[aria-expanded="true"]
+//     top 10vh
+//     nav hy-nav-toggle
+//       display block
+//     // opacity 1
+//
+//   nav
+//     display block
+//     width 100%
+//     height 90vh
+//
+//     overflow-y scroll
+//     // -webkit-overflow-scrolling: touch;
 //
 //
-//   img
-//     max-width 100%
+//
+//   ul
+//     padding-top 3rem
+//
+//   li
+//     margin-left 5%
+//     margin-right 5%
+//
+//     &.check-in
+//       margin 0
+//
+//
+// hy-nav-toggle //, hy-logo-reflection
+//   z-index 1000
+//   position fixed
+//   top .5rem
+//   right .5rem
+//   background-color $bright-pink
+//   // padding .5rem .5rem
+//
+//
+//   &.cross
+//     background-color transparent !important
+//     display none
+//
+//
+//   &.over-content
+//     background-color #fff
+//     micro-animation-toggle
+//       color #000
+//
+//   & > button
+//     padding 0
+//     border 0
+//     background-color transparent
+//     cursor pointer
+//     padding .6rem .4rem .4rem .4rem
+//
+//   & > button > span
+//     display none
+//
+//   hy-nav nav &
+//     position absolute
+//     top 1rem
+//     right .5rem
+//
+// // hy-logo-reflection
+// //   opacity 0
+// //   max-width 2rem
+// //   right 3rem
+// //   transform translateY(-10%)
+// //   -webkit-transition: opacity 0.3s
+// //   -moz-transition: opacity 0.3s
+// //   -o-transition: opacity 0.3s
+// //   -ms-transition: opacity 0.3s
+// //   transition: opacity 0.3s
+// //
+// //
+// //   img
+// //     max-width 100%

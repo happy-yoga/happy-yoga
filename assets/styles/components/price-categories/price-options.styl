@@ -7,13 +7,11 @@ price-option
     text-align center
 
   h4
+    positioning-root()
     font-weight 500
     font-size 1.5rem
     margin-top .5rem
     margin-bottom 1.3rem
-    position relative
-    top 0
-    left 0
 
     &:after
       display inline-block
@@ -30,12 +28,10 @@ price-option
 
   .price
     p
+      positioning-root()
       display inline
       font-size 3rem
       font-weight 500
-      position relative
-      left 0
-      top 0
 
       .currency
         position absolute

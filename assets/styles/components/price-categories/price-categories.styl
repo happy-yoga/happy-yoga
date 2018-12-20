@@ -24,12 +24,12 @@ price-category
 
 
   header
+    positioning-root()
     padding-top 2rem
     padding-bottom 2rem
     background-color #ff4ca5
     background: linear-gradient(to bottom, #FC3DC0 1%,#FF4CF0 100%)
     color #fff
-    position relative
     border-radius $price-category-border-radius $price-category-border-radius 0 0
     overflow hidden
 
@@ -66,8 +66,8 @@ price-category
     padding 0
 
   ul
+    positioning-root()
     padding .5rem 0 1rem 0
-    position relative
 
     &:before
       content '♥︎'

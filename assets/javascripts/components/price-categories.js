@@ -11,9 +11,26 @@ class PriceCategories extends HTMLElement {
     return self
   }
 
+  handleTapOnCategory (e) {
+    this.interactionStartedCategory = e.currentTarget
+    this.interactionStartedAt = this.$window.scrollTop()
+  }
+
   toggleOpenCategory (e) {
-    e.stopPropagation()
-    e.preventDefault()
+    if (e.cancelable) {
+      e.stopPropagation()
+      e.preventDefault()
+    }
+
+    if (e.currentTarget === this.interactionStartedCategory) {
+      this.interactionEndedAt = this.$window.scrollTop()
+      const distance = this.interactionStartedAt - this.interactionEndedAt
+      if (distance > 20 || distance < -20) {
+        return
+      }
+    }
+
+    // this.interactionStartedCategory = null
 
     const priceCategory = $(e.currentTarget)
     const isActive = priceCategory.hasClass(activeClass)
@@ -31,10 +48,14 @@ class PriceCategories extends HTMLElement {
 
   connectedCallback () {
     this.$ = $(this)
+    this.$window = $(window)
     this.priceCategories = $('price-category', this.$)
 
+    // this.priceCategories.on('touchstart', this.handleTapOnCategory.bind(this))
+
     this.priceCategories.on(
-      'click touchstart',
+      'click touchend',
+      { cancelable: true },
       this.toggleOpenCategory.bind(this)
     )
   }

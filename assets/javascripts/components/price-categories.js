@@ -21,24 +21,24 @@ class PriceCategories extends HTMLElement {
       e.stopPropagation()
       e.preventDefault()
     }
+    if (!this.currentActive !== e.currentTarget) {
+      this.currentActive = e.currentTarget
 
-    if (e.currentTarget === this.interactionStartedCategory) {
-      this.interactionEndedAt = this.$window.scrollTop()
-      const distance = this.interactionStartedAt - this.interactionEndedAt
-      if (distance > 20 || distance < -20) {
-        return
+      if (e.currentTarget === this.interactionStartedCategory) {
+        this.interactionEndedAt = this.$window.scrollTop()
+        const distance = this.interactionStartedAt - this.interactionEndedAt
+        if (distance > 20 || distance < -20) {
+          return
+        }
       }
-    }
 
-    // this.interactionStartedCategory = null
+      // this.interactionStartedCategory = null
 
-    const priceCategory = $(e.currentTarget)
-    const isActive = priceCategory.hasClass(activeClass)
+      const priceCategory = $(e.currentTarget)
 
-    this.priceCategories.removeClass(activeClass)
-    this.priceCategories.removeClass(openClass)
+      this.priceCategories.removeClass(activeClass)
+      this.priceCategories.removeClass(openClass)
 
-    if (!isActive) {
       priceCategory.addClass(openClass)
       window.requestAnimationFrame(() => {
         priceCategory.addClass(activeClass)

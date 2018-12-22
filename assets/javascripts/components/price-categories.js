@@ -40,6 +40,11 @@
         this.priceCategories.removeClass(openClass)
 
         priceCategory.addClass(openClass)
+
+        if (!this.$.hasClass('opened-once')) {
+          this.$.addClass('opened-once')
+        }
+
         window.requestAnimationFrame(() => {
           priceCategory.addClass(activeClass)
         })

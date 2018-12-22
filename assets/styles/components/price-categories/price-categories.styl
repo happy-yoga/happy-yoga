@@ -44,6 +44,8 @@ price-category
         background-color bgCol
         color #fff
 
+    transition height
+
     h3
       position relative
       font-size 1.8rem
@@ -69,3 +71,22 @@ price-category
   &.active ul
     li
       transform translateY(0px)
+
+  .opening-hint
+    text-align center
+    margin-left auto
+    margin-right auto
+    border-radius 0 0 0 3rem
+    // padding 1rem
+    height 2rem
+    background url(/assets/images/tap.svg) no-repeat top center
+    background-size contain
+
+    transform translateY(-10px)
+    transition transform .2s
+    display none
+
+  &.price-category-in-line-of-sight .opening-hint
+    display block
+  &.price-category-in-line-of-sight.price-category-in-line-of-sight-and-active .opening-hint
+    transform translateY(0)

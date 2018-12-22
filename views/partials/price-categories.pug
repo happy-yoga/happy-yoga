@@ -26,6 +26,7 @@ mixin price-category(category)
     header
       h3= category.title
       p= category.subTitle
+      div.opening-hint
     ul  
       each option in category.priceOptions
         li

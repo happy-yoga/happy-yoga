@@ -1,4 +1,4 @@
-/* global $, HTMLElement, customElements */
+/* global $, HTMLElement, customElements, _ */
 
 ;(() => {
   const requestAnimationFrame = (function () {
@@ -36,9 +36,15 @@
         this.closeNavigation()
       })
 
-      this.window.scroll(this.handleToggleButtonColor.bind(this))
-      this.window.on('page:scrolled', this.handleToggleButtonColor.bind(this))
-      this.handleToggleButtonColor()
+      const handleToggleButtonColor = _.throttle(
+        this.handleToggleButtonColor.bind(this),
+        200,
+        { leading: true }
+      )
+
+      this.window.scroll(handleToggleButtonColor)
+      this.window.on('page:scrolled', handleToggleButtonColor)
+      handleToggleButtonColor()
     }
 
     toggleNavigation () {

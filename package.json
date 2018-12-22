@@ -53,6 +53,7 @@
     "i18next": "^11.10.2",
     "i18next-express-middleware": "^1.5.0",
     "i18next-node-fs-backend": "^2.1.1",
+    "lodash.debounce": "^4.0.8",
     "memory-cache": "^0.2.0",
     "morgan": "^1.9.1",
     "ms": "^2.1.1",

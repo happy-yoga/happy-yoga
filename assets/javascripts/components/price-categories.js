@@ -1,64 +1,103 @@
-/* global window, customElements, HTMLElement, $ */
+/* global window, customElements, HTMLElement, $, _ */
+;(() => {
+  const indicator = $('<price-category-opening-indicator />')
+  indicator.hide()
 
-const indicator = $('<price-category-opening-indicator />')
-indicator.hide()
-
-const openClass = 'open'
-const activeClass = 'active'
-class PriceCategories extends HTMLElement {
-  constructor (self) {
-    self = super(self)
-    return self
-  }
-
-  handleTapOnCategory (e) {
-    this.interactionStartedCategory = e.currentTarget
-    this.interactionStartedAt = this.$window.scrollTop()
-  }
-
-  toggleOpenCategory (e) {
-    if (e.cancelable) {
-      e.stopPropagation()
-      e.preventDefault()
+  const openClass = 'open'
+  const activeClass = 'active'
+  class PriceCategories extends HTMLElement {
+    constructor (self) {
+      self = super(self)
+      return self
     }
-    if (!this.currentActive !== e.currentTarget) {
-      this.currentActive = e.currentTarget
 
-      if (e.currentTarget === this.interactionStartedCategory) {
-        this.interactionEndedAt = this.$window.scrollTop()
-        const distance = this.interactionStartedAt - this.interactionEndedAt
-        if (distance > 20 || distance < -20) {
-          return
-        }
+    handleTapOnCategory (e) {
+      this.interactionStartedCategory = e.currentTarget
+      this.interactionStartedAt = this.$window.scrollTop()
+    }
+
+    toggleOpenCategory (e) {
+      if (e.cancelable) {
+        e.stopPropagation()
+        e.preventDefault()
       }
+      if (!this.currentActive !== e.currentTarget) {
+        this.currentActive = e.currentTarget
 
-      // this.interactionStartedCategory = null
+        if (e.currentTarget === this.interactionStartedCategory) {
+          this.interactionEndedAt = this.$window.scrollTop()
+          const distance = this.interactionStartedAt - this.interactionEndedAt
+          if (distance > 20 || distance < -20) {
+            return
+          }
+        }
 
-      const priceCategory = $(e.currentTarget)
+        // this.interactionStartedCategory = null
 
-      this.priceCategories.removeClass(activeClass)
-      this.priceCategories.removeClass(openClass)
+        const priceCategory = $(e.currentTarget)
 
-      priceCategory.addClass(openClass)
-      window.requestAnimationFrame(() => {
-        priceCategory.addClass(activeClass)
-      })
+        this.priceCategories.removeClass(activeClass)
+        this.priceCategories.removeClass(openClass)
+
+        priceCategory.addClass(openClass)
+        window.requestAnimationFrame(() => {
+          priceCategory.addClass(activeClass)
+        })
+      }
+    }
+
+    checkCategoryInViewPort () {
+      const lineOfSight = 300
+      const scrollTop = this.$window.scrollTop() + lineOfSight
+
+      const offset = this.$.offset()
+
+      if (scrollTop > offset.top && scrollTop < offset.top + this.$.height()) {
+        console.log(
+          scrollTop > offset.top,
+          scrollTop < offset.top + this.$.height()
+        )
+        this.priceCategories.each((i, c) => {
+          const $c = $(c)
+          const cOffset = $c.offset()
+          if (
+            scrollTop > cOffset.top &&
+            scrollTop < cOffset.top + $c.height()
+          ) {
+            this.priceCategories
+              .removeClass('price-category-in-line-of-sight')
+              .removeClass('price-category-in-line-of-sight-and-active')
+
+            $c.addClass('price-category-in-line-of-sight')
+            window.requestAnimationFrame(() => {
+              $c.addClass('price-category-in-line-of-sight-and-active')
+            })
+          }
+        })
+      }
+    }
+
+    connectedCallback () {
+      this.$ = $(this)
+      this.$window = $(window)
+      this.priceCategories = $('price-category', this.$)
+
+      // this.priceCategories.on('touchstart', this.handleTapOnCategory.bind(this))
+
+      this.priceCategories.on(
+        'click touchend',
+        this.toggleOpenCategory.bind(this)
+      )
+
+      const checkCategoryInViewPort = _.throttle(
+        this.checkCategoryInViewPort.bind(this),
+        200,
+        { leading: true }
+      )
+
+      $(window).on('scroll', checkCategoryInViewPort)
     }
   }
 
-  connectedCallback () {
-    this.$ = $(this)
-    this.$window = $(window)
-    this.priceCategories = $('price-category', this.$)
-
-    // this.priceCategories.on('touchstart', this.handleTapOnCategory.bind(this))
-
-    this.priceCategories.on(
-      'click touchend',
-      { cancelable: true },
-      this.toggleOpenCategory.bind(this)
-    )
-  }
-}
-
-customElements.define('price-categories', PriceCategories)
+  customElements.define('price-categories', PriceCategories)
+})()

@@ -11,26 +11,32 @@ class PriceCategories extends HTMLElement {
     return self
   }
 
+  toggleOpenCategory (e) {
+    e.stopPropagation()
+    e.preventDefault()
+
+    const priceCategory = $(e.currentTarget)
+    const isActive = priceCategory.hasClass(activeClass)
+
+    this.priceCategories.removeClass(activeClass)
+    this.priceCategories.removeClass(openClass)
+
+    if (!isActive) {
+      priceCategory.addClass(openClass)
+      window.requestAnimationFrame(() => {
+        priceCategory.addClass(activeClass)
+      })
+    }
+  }
+
   connectedCallback () {
     this.$ = $(this)
     this.priceCategories = $('price-category', this.$)
 
-    this.priceCategories.on('click', e => {
-      e.preventDefault()
-
-      const priceCategory = $(e.currentTarget)
-      const isActive = priceCategory.hasClass(activeClass)
-
-      this.priceCategories.removeClass(activeClass)
-      this.priceCategories.removeClass(openClass)
-
-      if (!isActive) {
-        priceCategory.addClass(openClass)
-        window.requestAnimationFrame(() => {
-          priceCategory.addClass(activeClass)
-        })
-      }
-    })
+    this.priceCategories.on(
+      'click touchstart',
+      this.toggleOpenCategory.bind(this)
+    )
   }
 }
 

@@ -43,6 +43,7 @@
 
         if (!this.$.hasClass('opened-once')) {
           this.$.addClass('opened-once')
+          this.removeCheckForViewPort()
         }
 
         window.requestAnimationFrame(() => {
@@ -58,10 +59,6 @@
       const offset = this.$.offset()
 
       if (scrollTop > offset.top && scrollTop < offset.top + this.$.height()) {
-        console.log(
-          scrollTop > offset.top,
-          scrollTop < offset.top + this.$.height()
-        )
         this.priceCategories.each((i, c) => {
           const $c = $(c)
           const cOffset = $c.offset()
@@ -82,6 +79,13 @@
       }
     }
 
+    removeCheckForViewPort () {
+      $(window).off('scroll', this.throttledViewPortChecker)
+      this.priceCategories
+        .removeClass('price-category-in-line-of-sight')
+        .removeClass('price-category-in-line-of-sight-and-active')
+    }
+
     connectedCallback () {
       this.$ = $(this)
       this.$window = $(window)
@@ -94,13 +98,13 @@
         this.toggleOpenCategory.bind(this)
       )
 
-      const checkCategoryInViewPort = _.throttle(
+      this.throttledViewPortChecker = _.throttle(
         this.checkCategoryInViewPort.bind(this),
         200,
         { leading: true }
       )
 
-      $(window).on('scroll', checkCategoryInViewPort)
+      $(window).on('scroll', this.throttledViewPortChecker)
     }
   }
 

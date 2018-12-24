@@ -1,5 +1,16 @@
 /* global window, customElements, HTMLElement, $, _ */
 ;(() => {
+  const requestAnimationFrame = (function () {
+    return (
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      function (callback) {
+        window.setTimeout(callback, 1000 / 60)
+      }
+    )
+  })()
+
   const indicator = $('<price-category-opening-indicator />')
   indicator.hide()
 
@@ -47,7 +58,7 @@
           this.removeCheckForViewPort()
         }
 
-        window.requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
           priceCategory.addClass(activeClass)
         })
       } else {
@@ -77,7 +88,7 @@
               .removeClass('price-category-in-line-of-sight-and-active')
 
             $c.addClass('price-category-in-line-of-sight')
-            window.requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
               $c.addClass('price-category-in-line-of-sight-and-active')
             })
           }

@@ -30,7 +30,8 @@
     return closeButton
   }
 
-  const cloneContentElement = () => $('<div class="course-preview-clone-content" />')
+  const cloneContentElement = () =>
+    $('<div class="course-preview-clone-content" />')
 
   class HyCoursePreview extends HTMLElement {
     constructor (self) {
@@ -47,16 +48,22 @@
         $('course-preview-clone').remove() // kill all the clones
 
         this.content = this.a.html()
-        const clone = $('<div />')
+        const clone = $('<course-preview-clone />')
         const cloneContent = cloneContentElement()
 
         clone.addClass('course-preview-clone')
         clone.append(cloneContent)
         cloneContent.html(this.content)
 
-        cloneContent.append(closeButtonElement(this.$.attr('close-text'), clone))
+        cloneContent.append(
+          closeButtonElement(this.$.attr('close-text'), clone)
+        )
 
         requestAnimationFrame(() => {
+          clone.on('click', e => {
+            e.preventDefault()
+            e.stopPropagation()
+          })
           this.$.append(clone)
 
           requestAnimationFrame(() => {

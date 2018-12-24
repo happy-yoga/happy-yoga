@@ -16,7 +16,7 @@
       this.interactionStartedAt = this.$window.scrollTop()
     }
 
-    toggleOpenCategory (e) {
+    toggleCategory (e) {
       if (e.cancelable) {
         e.stopPropagation()
         e.preventDefault()
@@ -25,7 +25,7 @@
       if (e.currentTarget === this.interactionStartedCategory) {
         this.interactionEndedAt = this.$window.scrollTop()
         const distance = this.interactionStartedAt - this.interactionEndedAt
-        if (distance > 20 || distance < -20) {
+        if (distance > 50 || distance < -50) {
           return
         }
       }
@@ -59,6 +59,7 @@
 
     checkCategoryInViewPort () {
       const lineOfSight = 300
+      const activitiyMaskOffset = 50
       const scrollTop = this.$window.scrollTop() + lineOfSight
 
       const offset = this.$.offset()
@@ -68,8 +69,8 @@
           const $c = $(c)
           const cOffset = $c.offset()
           if (
-            scrollTop > cOffset.top &&
-            scrollTop < cOffset.top + $c.height()
+            scrollTop > cOffset.top + activitiyMaskOffset &&
+            scrollTop < cOffset.top + $c.height() - activitiyMaskOffset
           ) {
             this.priceCategories
               .removeClass('price-category-in-line-of-sight')
@@ -96,10 +97,7 @@
       this.$window = $(window)
       this.priceCategories = $('price-category', this.$)
 
-      this.priceCategories.on(
-        'click touchend',
-        this.toggleOpenCategory.bind(this)
-      )
+      this.priceCategories.on('click touchend', this.toggleCategory.bind(this))
 
       this.throttledViewPortChecker = _.throttle(
         this.checkCategoryInViewPort.bind(this),

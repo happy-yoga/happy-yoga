@@ -20,32 +20,36 @@ content-area.price-categories-wrapper
 
   &:before, price-categories > ul:before
     background-color #F8BF63
-    left 4rem
+    left 1rem
 
   &:after, price-categories > ul:after
     background-color #EB5D94
-    left 9.5rem
+    left 6.5rem
 
   price-categories > ul:before, price-categories > ul:after
-    width 50%
+    width 100%
     top auto
     bottom -3rem
     z-index 1
 
   price-categories > ul:before
-    left 2rem
+    left -4rem
   price-categories > ul:after
-    left 7.5rem
+    left 1.5rem
 
 
   h2
-    top -1px
+    top 1.5rem
+    right 0.5rem
+    text-align right
+    padding 0 3rem 0 0
+    font-size 2.5rem
     // z-index 1000
     // margin-bottom 0
     // background transparent
     border-bottom none
     background-color transparent
-    z-index 999
+    z-index 1000
 
 price-categories
   display block
@@ -142,7 +146,7 @@ price-category
     background url(/assets/images/tap.svg) no-repeat top center
     background-size contain
 
-    transform translateY(-100px)
+    transform translateY(-50px)
     transition transform .2s
     display none
 
@@ -153,3 +157,10 @@ price-category
 
 .opened-once .opening-hint
   display none !important
+
+li:last-of-type price-category.open
+  header
+    border-bottom 0 !important
+
+  ul
+    border-bottom 3px solid #2C2542

@@ -52,6 +52,8 @@
         })
       } else {
         this.currentActive = null
+        this.$.removeClass('opened-once')
+        $(window).on('scroll', this.throttledViewPortChecker)
       }
     }
 

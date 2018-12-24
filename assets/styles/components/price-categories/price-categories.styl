@@ -9,7 +9,7 @@ content-area.price-categories-wrapper
   color #fff
   // padding 2rem
 
-  &:before, &:after, ul:before, ul:after
+  &:before, &:after, price-categories > ul:before, price-categories > ul:after
     content ''
     display block
     width 100%
@@ -18,22 +18,23 @@ content-area.price-categories-wrapper
     position absolute
     top 0
 
-  &:before, ul:before
+  &:before, price-categories > ul:before
     background-color #F8BF63
     left 4rem
 
-  &:after, ul:after
+  &:after, price-categories > ul:after
     background-color #EB5D94
     left 9.5rem
 
-  ul:before, ul:after
+  price-categories > ul:before, price-categories > ul:after
     width 50%
     top auto
     bottom -3rem
+    z-index 1
 
-  ul:before
+  price-categories > ul:before
     left 2rem
-  ul:after
+  price-categories > ul:after
     left 7.5rem
 
 

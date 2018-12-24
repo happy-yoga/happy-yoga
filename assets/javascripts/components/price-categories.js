@@ -21,23 +21,24 @@
         e.stopPropagation()
         e.preventDefault()
       }
-      if (!this.currentActive !== e.currentTarget) {
-        this.currentActive = e.currentTarget
 
-        if (e.currentTarget === this.interactionStartedCategory) {
-          this.interactionEndedAt = this.$window.scrollTop()
-          const distance = this.interactionStartedAt - this.interactionEndedAt
-          if (distance > 20 || distance < -20) {
-            return
-          }
+      if (e.currentTarget === this.interactionStartedCategory) {
+        this.interactionEndedAt = this.$window.scrollTop()
+        const distance = this.interactionStartedAt - this.interactionEndedAt
+        if (distance > 20 || distance < -20) {
+          return
         }
+      }
 
-        // this.interactionStartedCategory = null
+      // this.interactionStartedCategory = null
 
-        const priceCategory = $(e.currentTarget)
+      const priceCategory = $(e.currentTarget)
 
-        this.priceCategories.removeClass(activeClass)
-        this.priceCategories.removeClass(openClass)
+      this.priceCategories.removeClass(activeClass)
+      this.priceCategories.removeClass(openClass)
+
+      if (this.currentActive !== e.currentTarget) {
+        this.currentActive = e.currentTarget
 
         priceCategory.addClass(openClass)
 
@@ -49,6 +50,8 @@
         window.requestAnimationFrame(() => {
           priceCategory.addClass(activeClass)
         })
+      } else {
+        this.currentActive = null
       }
     }
 
@@ -90,8 +93,6 @@
       this.$ = $(this)
       this.$window = $(window)
       this.priceCategories = $('price-category', this.$)
-
-      // this.priceCategories.on('touchstart', this.handleTapOnCategory.bind(this))
 
       this.priceCategories.on(
         'click touchend',

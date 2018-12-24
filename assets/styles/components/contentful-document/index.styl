@@ -1,6 +1,7 @@
 contentful-embedded-asset
   display block
-  margin-bottom 1.5rem
+  margin-top 2.5rem
+  margin-bottom 2.5rem
 
   // img
   //   border-radius .5rem
@@ -48,3 +49,19 @@ contentful-document
     // padding-bottom .875rem
     &:last-of-type
       padding-bottom 0
+
+  blockquote
+    positioning-root()
+    margin 0
+    font-style italic
+    padding-left 1rem
+
+    &:before
+      position absolute
+      top 0
+      left 0
+      height 100%
+      content ''
+      width 3px
+      background-color #9891AE
+      border-radius 5px

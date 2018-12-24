@@ -58,8 +58,8 @@
     }
 
     checkCategoryInViewPort () {
-      const lineOfSight = 300
-      const activitiyMaskOffset = 50
+      const lineOfSight = 200
+      const activitiyMaskOffset = 20
       const scrollTop = this.$window.scrollTop() + lineOfSight
 
       const offset = this.$.offset()

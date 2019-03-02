@@ -64,6 +64,7 @@
             e.preventDefault()
             e.stopPropagation()
           })
+
           this.$.append(clone)
 
           requestAnimationFrame(() => {

@@ -1,6 +1,7 @@
 $price-category-border-radius = 5px
 content-area.price-categories-wrapper
   positioning-root()
+  // min-width 300px
   padding 3rem 1rem
   padding-top 5rem
   background-color #2C2542
@@ -121,9 +122,11 @@ price-category
     border-radius 0 0 0 3rem
     display none
     overflow hidden
-    padding-top 3rem
+    padding-top 5rem
+    padding-bottom 2rem
     transform translateY(-3rem)
     z-index 998
+
 
     li
       transform translateY(-100px)

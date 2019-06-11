@@ -8,7 +8,6 @@ content-area.price-categories-wrapper
   background-image linear-gradient(135deg, #2C2542, #19172C)
   overflow hidden
   color #fff
-  // padding 2rem
 
   &:before, &:after, price-categories > ul:before, price-categories > ul:after
     content ''
@@ -37,6 +36,19 @@ content-area.price-categories-wrapper
     left -4rem
   price-categories > ul:after
     left 1.5rem
+
+
+  @media screen and (min-width: 600px)
+    price-categories > ul
+      display flex
+      flex-direction row
+      overflow hidden
+      flex-wrap wrap
+      // align-items: flex-start;
+
+    // price-categories > ul > li
+    //   width 50%
+    //   width 50vw
 
 
   h2
@@ -127,7 +139,6 @@ price-category
     transform translateY(-3rem)
     z-index 998
 
-
     li
       transform translateY(-100px)
       transition transform .5s
@@ -157,6 +168,33 @@ price-category
     display block
   &.price-category-in-line-of-sight.price-category-in-line-of-sight-and-active .opening-hint
     transform translateY(0)
+
+
+  @media screen and (min-width: 600px)
+    // max-width 450px
+    // justify-self inner-1
+    margin-left .5rem
+    margin-right .5rem
+
+    header
+      border 0
+      margin-top 0
+      padding-top 2rem
+      border-top 0 !important
+
+      li
+        border-radius 0 0 0 3rem
+      li:last-of-type &
+        border-bottom 0
+
+    ul
+      display block
+      border-radius 0 0 3px 3px
+      li
+        transform translateY(0px)
+
+    .opening-hint
+      display none !important
 
 .opened-once .opening-hint
   display none !important

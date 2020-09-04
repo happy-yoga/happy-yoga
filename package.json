@@ -75,7 +75,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^6.0.0",
     "imagemin-svgo": "^7.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.18.9",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^6.0.1",
